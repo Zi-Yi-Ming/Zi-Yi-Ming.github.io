@@ -1,3 +1,0 @@
-User-agent: *
-Disallow:
-Sitemap: https://Zi-Yi-Ming.github.io/sitemap.xml

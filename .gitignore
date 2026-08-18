@@ -1,0 +1,4 @@
+# Hugo 构建产物（由 GitHub Actions 在云端生成，不需要提交）
+public/
+resources/
+.hugo_build.lock
