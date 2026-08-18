@@ -1,0 +1,84 @@
+/*
+ * 个人博客定制样式 —— 基于 ui-ux-pro-max 设计库
+ * 风格: Swiss Modernism 2.0 / 杂志博客极简
+ * 配色: 背景 #F8FAFC, 正文 #1E293B, 边框 #E2E8F0, 单一强调色 #3B82F6
+ * 字体: Lexend(标题) + Source Sans 3(正文), 中文回退 PingFang SC / Microsoft YaHei
+ */
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap');
+
+:root {
+  --primary: #3b82f6;          /* 单一强调色: 链接/标签 */
+  --primary-dim: #2563eb;
+  --content: #1e293b;          /* 正文主色 (对比度 > 12:1) */
+  --secondary: #475569;        /* 次要文字 (对比度 7.6:1) */
+  --border: #e2e8f0;           /* 边框/分隔线 */
+  --theme: #f8fafc;            /* 页面背景 */
+  --card-bg: #ffffff;
+  --code-block-bg: #0f172a;
+  --selection: #dbeafe;
+}
+
+[data-theme="dark"] {
+  --primary: #60a5fa;
+  --primary-dim: #3b82f6;
+  --content: #e2e8f0;
+  --secondary: #94a3b8;
+  --border: #334155;
+  --theme: #0f172a;
+  --card-bg: #1e293b;
+  --selection: #1e3a8a;
+}
+
+body {
+  font-family: "Source Sans 3", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  background-color: var(--theme);
+  color: var(--content);
+  line-height: 1.75;
+}
+
+h1, h2, h3, h4, h5, h6,
+.post-title, .post-header .description,
+.nav, .logo, .post-meta, .terms-tags a {
+  font-family: "Lexend", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+}
+
+/* 文章阅读宽度优化 (瑞士极简: 克制的排版比例) */
+.post-content {
+  font-size: 1.0625rem;
+}
+
+/* 卡片式文章条目: 干净边框 + 柔和悬浮反馈 (200-250ms) */
+.post-entry {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background-color: var(--card-bg);
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+.post-entry:hover {
+  border-color: var(--primary-dim);
+  box-shadow: 0 0 0 1px var(--primary-dim);
+}
+
+/* 链接: 稳定下划线 + 过渡 */
+a {
+  color: var(--primary);
+  transition: color 150ms ease;
+}
+a:hover {
+  color: var(--primary-dim);
+}
+
+/* 正文选中高亮 */
+::selection {
+  background-color: var(--selection);
+}
+
+/* 代码块圆角与内边距 */
+pre {
+  border-radius: 8px;
+}
+
+/* 移动端: 内容不被遮挡 */
+main {
+  padding-top: 1rem;
+}
