@@ -54,11 +54,6 @@ paginate = 10
     url = '/about/'
     weight = 4
   [[menu.main]]
-    identifier = 'archives'
-    name = '归档'
-    url = '/archives/'
-    weight = 5
-  [[menu.main]]
     identifier = 'search'
     name = '搜索'
     url = '/search/'

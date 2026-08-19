@@ -11,7 +11,7 @@ myblog/
 ├── content/
 │   ├── posts/           # 文章目录，写 Markdown 放这里
 │   ├── search.md        # 搜索页面
-│   └── archives.md      # 归档页面
+│   └── about.md         # 关于页面
 └── themes/papermod/     # 主题（git submodule）
 ```
 
