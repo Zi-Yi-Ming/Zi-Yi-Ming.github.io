@@ -1,5 +1,5 @@
 baseURL = 'https://Zi-Yi-Ming.github.io/'
-languageCode = 'zh-cn'
+locale = 'zh-cn'
 title = '我的博客'
 theme = 'papermod'
 
@@ -39,42 +39,27 @@ paginate = 10
     url = '/'
     weight = 1
   [[menu.main]]
-    identifier = 'backend'
-    name = '前后端'
-    url = '/backend/'
+    identifier = 'toolbox'
+    name = '自用清单'
+    url = '/toolbox/'
     weight = 2
   [[menu.main]]
-    identifier = 'ai'
-    name = '人工智能'
-    url = '/ai/'
+    identifier = 'notes'
+    name = '博客笔记'
+    url = '/notes/'
     weight = 3
-  [[menu.main]]
-    identifier = 'other'
-    name = '其它'
-    url = '/other/'
-    weight = 4
-  [[menu.main]]
-    identifier = 'literature'
-    name = '文学作品'
-    url = '/literature/'
-    weight = 5
-  [[menu.main]]
-    identifier = 'journal'
-    name = '日周记总结'
-    url = '/journal/'
-    weight = 6
   [[menu.main]]
     identifier = 'about'
     name = '关于'
     url = '/about/'
-    weight = 7
+    weight = 4
   [[menu.main]]
     identifier = 'archives'
     name = '归档'
     url = '/archives/'
-    weight = 8
+    weight = 5
   [[menu.main]]
     identifier = 'search'
     name = '搜索'
     url = '/search/'
-    weight = 9
+    weight = 6

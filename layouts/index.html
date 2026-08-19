@@ -1,0 +1,109 @@
+{{- define "main" }}
+{{- $articles := where (where .Site.RegularPages "Params.draft" "!=" true) "Section" "in" (slice "notes") }}
+{{- $total := len $articles }}
+{{- $featured := index $articles 0 }}
+{{- $rest := $articles | after 1 }}
+{{- $sections := slice
+  (dict "name" "toolbox"  "icon" "wrench" "desc" "开发环境、编辑器与效率工具推荐" "countLabel" "自用清单")
+  (dict "name" "notes"    "icon" "link"   "desc" "技术笔记，原文见 CSDN")
+}}
+<main>
+  <!-- Hero -->
+  <section class="inkline-hero">
+    <span class="inkline-hero-accent ink-animate-fade ink-delay-1"></span>
+    <h1 class="ink-animate-up ink-delay-1">{{ .Site.Params.description | default "记录技术、思考与生活" }}</h1>
+    <p class="ink-animate-up ink-delay-2">{{ .Site.Params.homeInfoParams.Content | default "记录技术笔记、学习心得与生活随想。" }}</p>
+    <span class="inkline-hero-meta ink-animate-fade ink-delay-3">EST. 2026 &middot; 技术 &middot; 思考 &middot; 生活</span>
+    <hr>
+  </section>
+
+  <!-- Stats Strip -->
+  <div class="inkline-stats ink-animate-fade ink-delay-4">
+    <div class="inkline-stats-inner">
+      <span><span class="stat-num">{{ $total }}</span> 篇文章</span>
+      <span class="stat-sep">&middot;</span>
+      <span><span class="stat-num">{{ len $sections }}</span> 个分类</span>
+      <span class="stat-sep">&middot;</span>
+      <span>Hugo + PaperMod</span>
+      <span class="stat-sep">&middot;</span>
+      <span>GitHub Pages</span>
+    </div>
+  </div>
+
+  <!-- Latest Articles -->
+  <section class="inkline-section">
+    <h2 class="inkline-section-title">最新文章</h2>
+
+    {{ with $featured }}
+    {{ $sec := site.GetPage (printf "/%s" .Section) }}
+    {{ $link := .RelPermalink }}
+    {{ with .Params.externalUrl }}{{ $link = . }}{{ end }}
+    <div class="inkline-featured">
+      <span class="inkline-featured-label">
+        {{ partial "icon.html" "sparkles" }}
+        {{ with $sec }}{{ .Title }}{{ else }}{{ .Section }}{{ end }}
+      </span>
+      <h3 class="inkline-featured-title"><a href="{{ $link }}"{{ with .Params.externalUrl }} target="_blank" rel="noopener"{{ end }}>{{ .Title }}</a></h3>
+      <div class="inkline-featured-date">
+        <span>{{ .Date.Format "2006-01-02" }}</span>
+        <span style="color: var(--inkline-ink-3);">&middot;</span>
+        <span>约 {{ .ReadingTime }} 分钟</span>
+      </div>
+      <p class="inkline-featured-desc">{{ .Description | default (.Summary | plainify | truncate 120) }}</p>
+      {{ with .Params.tags }}
+      <div class="inkline-tags" style="margin-bottom: 20px;">
+        {{ range first 3 . }}<span class="inkline-tag">{{ . }}</span>{{ end }}
+      </div>
+      {{ end }}
+      <a href="{{ $link }}"{{ with .Params.externalUrl }} target="_blank" rel="noopener"{{ end }} class="inkline-featured-read">
+        阅读更多
+        {{ partial "icon.html" "arrow-right" }}
+      </a>
+    </div>
+    {{ end }}
+
+    <ul class="inkline-article-list">
+      {{ range $rest }}
+      {{ $sec := site.GetPage (printf "/%s" .Section) }}
+      {{ $link := .RelPermalink }}
+      {{ with .Params.externalUrl }}{{ $link = . }}{{ end }}
+      <li class="inkline-article-item">
+        <span class="inkline-article-category">{{ with $sec }}{{ .Title }}{{ else }}{{ .Section }}{{ end }}</span>
+        <h3 class="inkline-article-title"><a href="{{ $link }}"{{ with .Params.externalUrl }} target="_blank" rel="noopener"{{ end }}>{{ .Title }}</a></h3>
+        <div class="inkline-article-date">
+          <span>{{ .Date.Format "2006-01-02" }}</span>
+          <span style="color: var(--inkline-ink-3);">&middot;</span>
+          <span>约 {{ .ReadingTime }} 分钟</span>
+        </div>
+        <p class="inkline-article-desc">{{ .Description | default (.Summary | plainify | truncate 90) }}</p>
+        {{ with .Params.tags }}
+        <div class="inkline-tags">
+          {{ range first 3 . }}<span class="inkline-tag">{{ . }}</span>{{ end }}
+        </div>
+        {{ end }}
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+
+  <!-- Categories -->
+  <section class="inkline-section">
+    <h2 class="inkline-section-title">分类浏览</h2>
+    <div class="inkline-categories">
+      {{ range $sections }}
+      {{ $sec := site.GetPage (printf "/%s" .name) }}
+      {{ $icon := .icon }}
+      {{ $desc := .desc }}
+      {{ $count := 0 }}
+      {{ with $sec }}{{ $count = len (where .Pages "Kind" "eq" "page") }}{{ end }}
+      <a href="{{ with $sec }}{{ .RelPermalink }}{{ else }}/{{ .name }}/{{ end }}" class="inkline-category-card inkline-cat-{{ .name }}">
+        <div class="inkline-category-icon">{{ partial "icon.html" $icon }}</div>
+        <h3 class="inkline-category-name">{{ with $sec }}{{ .Title }}{{ else }}{{ .name }}{{ end }}</h3>
+        <p class="inkline-category-desc">{{ with $sec }}{{ .Description | default $desc }}{{ else }}{{ $desc }}{{ end }}</p>
+        <span class="inkline-category-count">{{ with .countLabel }}{{ . }}{{ else }}{{ $count }} 篇文章{{ end }}</span>
+      </a>
+      {{ end }}
+    </div>
+  </section>
+</main>
+{{- end }}

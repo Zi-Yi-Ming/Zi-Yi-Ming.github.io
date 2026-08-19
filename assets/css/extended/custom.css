@@ -1,36 +1,82 @@
 /*
- * 个人博客定制样式 —— 基于 ui-ux-pro-max 设计库
- * 风格: Swiss Modernism 2.0 / 杂志博客极简
- * 配色: 背景 #F8FAFC, 正文 #1E293B, 边框 #E2E8F0, 单一强调色 #3B82F6
- * 字体: Lexend(标题) + Source Sans 3(正文), 中文回退 PingFang SC / Microsoft YaHei
+ * 个人博客定制样式 —— 纸墨编辑风 (inkline)
+ * 来源: blog-editorial-ui/colors_and_type.css (Trae 设计稿)
+ * 通过覆盖 PaperMod 的 CSS 变量让全站统一风格
  */
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&display=swap');
 
 :root {
-  --primary: #3b82f6;          /* 单一强调色: 链接/标签 */
-  --primary-dim: #2563eb;
-  --content: #1e293b;          /* 正文主色 (对比度 > 12:1) */
-  --secondary: #475569;        /* 次要文字 (对比度 7.6:1) */
-  --border: #e2e8f0;           /* 边框/分隔线 */
-  --theme: #f8fafc;            /* 页面背景 */
-  --card-bg: #ffffff;
-  --code-block-bg: #0f172a;
-  --selection: #dbeafe;
+  color-scheme: light;
+  /* inkline 设计 token */
+  --inkline-background: #f4efe7;
+  --inkline-foreground: #171717;
+  --inkline-card: #fcfaf6;
+  --inkline-primary: #2d675b;
+  --inkline-primary-foreground: #f8f6f1;
+  --inkline-muted: #e8e0d4;
+  --inkline-muted-foreground: #5f5a53;
+  --inkline-border: #d8cebf;
+  --inkline-ink-2: #5f5a53;
+  --inkline-ink-3: #8a8379;
+  --inkline-surface-2: #efe7da;
+  --inkline-radius-sm: 4px;
+  --inkline-radius-md: 10px;
+  --inkline-radius-lg: 16px;
+
+  /* PaperMod 变量映射 */
+  --theme: var(--inkline-background);
+  --content: var(--inkline-foreground);
+  --entry: var(--inkline-card);
+  --card-bg: var(--inkline-card);
+  --card-bg-selected: var(--inkline-surface-2);
+  --primary: var(--inkline-primary);
+  --primary-dim: #245248;
+  --secondary: var(--inkline-muted-foreground);
+  --tertiary: var(--inkline-ink-3);
+  --border: var(--inkline-border);
+  --code-bg: #2a2620;
+  --code-block-bg: #2a2620;
+  --code-block-text: #e8e0d4;
+  --selection: #d8cebf;
+  --body-font-family: "Inter", "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+  --code-font-family: ui-monospace, "SF Mono", "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
+  --radius: 10px;
 }
 
-[data-theme="dark"] {
-  --primary: #60a5fa;
-  --primary-dim: #3b82f6;
-  --content: #e2e8f0;
-  --secondary: #94a3b8;
-  --border: #334155;
-  --theme: #0f172a;
-  --card-bg: #1e293b;
-  --selection: #1e3a8a;
+/* 注意: 必须用 :root[data-theme="dark"] 与 PaperMod 同特异性,
+   否则暗色模式下主题自身的深灰变量会覆盖我们的暖色 token */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --inkline-background: #161a19;
+  --inkline-foreground: #e8e0d4;
+  --inkline-card: #1f2423;
+  --inkline-primary: #7fb3a6;
+  --inkline-primary-foreground: #101312;
+  --inkline-muted: #2a2f2e;
+  --inkline-muted-foreground: #b3ab9f;
+  --inkline-border: #3a403e;
+  --inkline-ink-2: #b3ab9f;
+  --inkline-ink-3: #8a8379;
+  --inkline-surface-2: #262c2b;
+
+  --theme: var(--inkline-background);
+  --content: var(--inkline-foreground);
+  --entry: var(--inkline-card);
+  --card-bg: var(--inkline-card);
+  --card-bg-selected: var(--inkline-surface-2);
+  --primary: var(--inkline-primary);
+  --primary-dim: #9cc4ba;
+  --secondary: var(--inkline-muted-foreground);
+  --tertiary: var(--inkline-ink-3);
+  --border: var(--inkline-border);
+  --code-bg: #101312;
+  --code-block-bg: #101312;
+  --code-block-text: #d8cebf;
+  --selection: #2f3a38;
 }
 
 body {
-  font-family: "Source Sans 3", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  font-family: var(--body-font-family);
   background-color: var(--theme);
   color: var(--content);
   line-height: 1.75;
@@ -38,28 +84,12 @@ body {
 
 h1, h2, h3, h4, h5, h6,
 .post-title, .post-header .description,
-.nav, .logo, .post-meta, .terms-tags a {
-  font-family: "Lexend", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+.logo, .nav {
+  font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", serif;
+  letter-spacing: 0.01em;
 }
 
-/* 文章阅读宽度优化 (瑞士极简: 克制的排版比例) */
-.post-content {
-  font-size: 1.0625rem;
-}
-
-/* 卡片式文章条目: 干净边框 + 柔和悬浮反馈 (200-250ms) */
-.post-entry {
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background-color: var(--card-bg);
-  transition: border-color 200ms ease, box-shadow 200ms ease;
-}
-.post-entry:hover {
-  border-color: var(--primary-dim);
-  box-shadow: 0 0 0 1px var(--primary-dim);
-}
-
-/* 链接: 稳定下划线 + 过渡 */
+/* 链接 */
 a {
   color: var(--primary);
   transition: color 150ms ease;
@@ -68,17 +98,45 @@ a:hover {
   color: var(--primary-dim);
 }
 
-/* 正文选中高亮 */
+/* 文章卡片: 纸墨风圆角 + 柔和阴影 */
+.post-entry {
+  border: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+  border-radius: var(--inkline-radius-md);
+  background-color: var(--card-bg);
+  box-shadow: 0 1px 2px rgba(23, 23, 23, 0.03), 0 8px 24px rgba(23, 23, 23, 0.03);
+  transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+.post-entry:hover {
+  border-color: var(--primary-dim);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--primary) 50%, transparent),
+              0 10px 30px rgba(23, 23, 23, 0.06);
+}
+
+/* 标签 */
+.terms-tags a,
+.tag {
+  background: var(--inkline-muted);
+  color: var(--inkline-ink-2);
+  border-radius: var(--inkline-radius-sm);
+}
+.terms-tags a:hover {
+  background: var(--inkline-border);
+}
+
+/* 代码块 */
+pre {
+  border-radius: var(--inkline-radius-md);
+}
+code {
+  font-family: var(--code-font-family);
+}
+
+/* 选中高亮 */
 ::selection {
   background-color: var(--selection);
 }
 
-/* 代码块圆角与内边距 */
-pre {
-  border-radius: 8px;
-}
-
-/* 移动端: 内容不被遮挡 */
+/* 页面顶部留白 */
 main {
-  padding-top: 1rem;
+  padding-top: 0.5rem;
 }
