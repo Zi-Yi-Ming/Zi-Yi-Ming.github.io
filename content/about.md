@@ -1,6 +1,10 @@
 ---
 title: "关于我"
 description: "关于这个博客和作者"
+ShowReadingTime: false
+ShowWordCount: false
+hideAuthor: true
+hideMeta: true
 ---
 
 # 关于我

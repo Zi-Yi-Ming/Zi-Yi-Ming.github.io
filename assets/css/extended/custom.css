@@ -141,3 +141,8 @@ code {
 main {
   padding-top: 0.5rem;
 }
+
+/* 列表卡片上不显示发布时间、阅读时长等元信息（文章详情页仍显示） */
+.post-entry .entry-footer {
+  display: none;
+}

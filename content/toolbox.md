@@ -1,9 +1,13 @@
 ---
 title: "自用清单"
 description: "自己用着顺手的工具、插件与资源推荐，持续更新"
+ShowReadingTime: false
+ShowWordCount: false
+hideAuthor: true
+hideMeta: true
 ---
 
-这里记录我自己在用的工具清单，都是亲测好用的东西，持续更新中。
+这里只列我实际用过、觉得值得留档的工具和插件，持续更新；常规必备的（浏览器、输入法这类人手一个的）就不占篇幅了。
 
 ## 开发环境
 
@@ -99,7 +103,3 @@ description: "自己用着顺手的工具、插件与资源推荐，持续更新
 - **用途**：量化研究平台，免费练习 Alpha 研究。
 - **推荐理由**：对量化入门友好，无需实盘资金也能积累研究经验。
 - **官网**：[platform.worldquantbrain.com](https://platform.worldquantbrain.com/)
-
-## 联系方式
-
-联系方式见[关于页](/about/)。
