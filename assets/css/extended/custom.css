@@ -146,3 +146,13 @@ main {
 .post-entry .entry-footer {
   display: none;
 }
+
+/* 表格在窄屏可横向滚动，不再撑破页面（主题在 table 上设 overflow-x 不可靠） */
+.md-content table {
+  display: block;
+  overflow-x: auto;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+/* 长链接 / 长串不在正文里溢出 */
+.md-content { overflow-wrap: anywhere; }

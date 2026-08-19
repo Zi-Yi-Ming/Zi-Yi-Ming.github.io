@@ -11,8 +11,8 @@ paginate = 10
 [params]
   env = 'production'
   title = '我的博客'
-  description = '记录技术、思考与生活'
-  author = '我'
+  description = '记录我正在学习、构建和折腾的一切'
+  author = 'Zi-Yi-Ming'
   DateFormat = '2006-01-02'
   defaultTheme = 'auto'
   ShowReadingTime = true
@@ -27,11 +27,11 @@ paginate = 10
 
   [params.homeInfoParams]
     Title = '你好，欢迎来到我的博客 👋'
-    Content = '这里是我的个人博客，用 Hugo + GitHub Pages 搭建，记录技术笔记、学习心得与生活随想。'
+    Content = '一个软件工程学生的个人空间。记录正在学的东西、正在搭的项目，还有一些折腾的过程。'
 
   [[params.socialIcons]]
     name = 'github'
-    url = 'https://github.com/'
+    url = 'https://github.com/Zi-Yi-Ming'
 
   [[menu.main]]
     identifier = 'home'
