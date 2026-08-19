@@ -42,6 +42,14 @@ description: "自己用着顺手的工具、插件与资源推荐，持续更新
 - **推荐理由**：写代码、写文档时的效率神器。
 - **官网**：[snipaste.com](https://www.snipaste.com/)
 
+## AI 工具
+
+### cnb-npc-skill（自研）
+- **用途**：让 CNB 的 CodeBuddy NPC 替自己上班——一句话派发任务，云端 AI 在仓库里自主完成开发并提交 PR，我只需验收。
+- **推荐理由**：把"建仓库→推代码→@CodeBuddy→等结果"的繁琐流程封装成一条命令；不占主力 agent 上下文、不占模型并发、当前免费；实测 240 秒内 NPC 提交 PR。
+- **GitHub**：[Zi-Yi-Ming/cnb-npc-skill](https://github.com/Zi-Yi-Ming/cnb-npc-skill)
+- **相关笔记**：[让 CNB CodeBuddy NPC 替我上班：cnb-npc-skill 项目实践](/notes/cnb-npc-skill/)
+
 ## 学习与资源
 
 ### WorldQuant BRAIN
