@@ -7,18 +7,18 @@
 
 :root {
   color-scheme: light;
-  /* inkline 设计 token */
-  --inkline-background: #f4efe7;
-  --inkline-foreground: #171717;
-  --inkline-card: #fcfaf6;
-  --inkline-primary: #2d675b;
-  --inkline-primary-foreground: #f8f6f1;
-  --inkline-muted: #e8e0d4;
-  --inkline-muted-foreground: #5f5a53;
-  --inkline-border: #d8cebf;
-  --inkline-ink-2: #5f5a53;
-  --inkline-ink-3: #8a8379;
-  --inkline-surface-2: #efe7da;
+  /* inkline 设计 token（同步自 blog-editorial-ui/colors_and_type.css · 清爽蓝调） */
+  --inkline-background: #f8f9fa;
+  --inkline-foreground: #1e293b;
+  --inkline-card: #ffffff;
+  --inkline-primary: #2563eb;
+  --inkline-primary-foreground: #ffffff;
+  --inkline-muted: #f1f5f9;
+  --inkline-muted-foreground: #64748b;
+  --inkline-border: #e2e8f0;
+  --inkline-ink-2: #64748b;
+  --inkline-ink-3: #94a3b8;
+  --inkline-surface-2: #eef2f6;
   --inkline-radius-sm: 4px;
   --inkline-radius-md: 10px;
   --inkline-radius-lg: 16px;
@@ -30,14 +30,14 @@
   --card-bg: var(--inkline-card);
   --card-bg-selected: var(--inkline-surface-2);
   --primary: var(--inkline-primary);
-  --primary-dim: #245248;
+  --primary-dim: #1d4ed8;
   --secondary: var(--inkline-muted-foreground);
   --tertiary: var(--inkline-ink-3);
   --border: var(--inkline-border);
-  --code-bg: #2a2620;
-  --code-block-bg: #2a2620;
-  --code-block-text: #e8e0d4;
-  --selection: #d8cebf;
+  --code-bg: #eef2f6;
+  --code-block-bg: #1e293b;
+  --code-block-text: #e2e8f0;
+  --selection: #dbeafe;
   --body-font-family: "Inter", "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
   --code-font-family: ui-monospace, "SF Mono", "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
   --radius: 10px;
@@ -47,17 +47,18 @@
    否则暗色模式下主题自身的深灰变量会覆盖我们的暖色 token */
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --inkline-background: #161a19;
-  --inkline-foreground: #e8e0d4;
-  --inkline-card: #1f2423;
-  --inkline-primary: #7fb3a6;
-  --inkline-primary-foreground: #101312;
-  --inkline-muted: #2a2f2e;
-  --inkline-muted-foreground: #b3ab9f;
-  --inkline-border: #3a403e;
-  --inkline-ink-2: #b3ab9f;
-  --inkline-ink-3: #8a8379;
-  --inkline-surface-2: #262c2b;
+  /* inkline 设计 token（同步自 blog-editorial-ui/colors_and_type.css · 深色编辑感） */
+  --inkline-background: #1a1a1a;
+  --inkline-foreground: #e5e5e5;
+  --inkline-card: #262626;
+  --inkline-primary: #10b981;
+  --inkline-primary-foreground: #0a0a0a;
+  --inkline-muted: #2d2d2d;
+  --inkline-muted-foreground: #a3a3a3;
+  --inkline-border: #404040;
+  --inkline-ink-2: #a3a3a3;
+  --inkline-ink-3: #737373;
+  --inkline-surface-2: #333333;
 
   --theme: var(--inkline-background);
   --content: var(--inkline-foreground);
@@ -65,14 +66,14 @@
   --card-bg: var(--inkline-card);
   --card-bg-selected: var(--inkline-surface-2);
   --primary: var(--inkline-primary);
-  --primary-dim: #9cc4ba;
+  --primary-dim: #34d399;
   --secondary: var(--inkline-muted-foreground);
   --tertiary: var(--inkline-ink-3);
   --border: var(--inkline-border);
-  --code-bg: #101312;
-  --code-block-bg: #101312;
-  --code-block-text: #d8cebf;
-  --selection: #2f3a38;
+  --code-bg: #101010;
+  --code-block-bg: #101010;
+  --code-block-text: #d4d4d4;
+  --selection: #065f46;
 }
 
 body {
