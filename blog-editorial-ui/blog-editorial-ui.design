@@ -1,0 +1,34 @@
+{
+  "data": [
+    {
+      "id": "page-index",
+      "title": "首页",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1787068257733,
+      "canvasData": {
+        "x": 192,
+        "y": -132,
+        "group": 0,
+        "layoutSnapshot": {
+          "version": 1,
+          "contentHeight": 2653,
+          "viewportWidth": 1440,
+          "sourceHash": "fnv1a-3a43fab1",
+          "measuredAt": 1787129009356
+        }
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/index.html",
+        "interactions": []
+      }
+    }
+  ],
+  "config": {
+    "autoLayout": false,
+    "deviceType": "desktop",
+    "projectName": "个人博客首页设计",
+    "visualEditorEnabled": false,
+    "showEdge": false
+  }
+}

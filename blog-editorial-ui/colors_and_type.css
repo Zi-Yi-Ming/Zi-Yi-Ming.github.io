@@ -1,0 +1,104 @@
+:root {
+  color-scheme: light;
+  /* 亮色主题: 清爽蓝调 */
+  --inkline-background: #f8f9fa;
+  --inkline-foreground: #1e293b;
+  --inkline-card: #ffffff;
+  --inkline-card-foreground: #1e293b;
+  --inkline-popover: #ffffff;
+  --inkline-popover-foreground: #1e293b;
+  --inkline-primary: #2563eb;
+  --inkline-primary-foreground: #ffffff;
+  --inkline-muted: #f1f5f9;
+  --inkline-muted-foreground: #64748b;
+  --inkline-border: #e2e8f0;
+  --inkline-input: #e2e8f0;
+  --inkline-ring: #2563eb;
+  --inkline-radius-sm: 4px;
+  --inkline-radius-md: 10px;
+  --inkline-radius-lg: 16px;
+  --inkline-bg: var(--inkline-background);
+  --inkline-surface: var(--inkline-card);
+  --inkline-surface-2: #eef2f6;
+  --inkline-ink: var(--inkline-foreground);
+  --inkline-ink-2: #64748b;
+  --inkline-ink-3: #94a3b8;
+  --inkline-line: var(--inkline-border);
+  --inkline-brand: var(--inkline-primary);
+  --inkline-brand-ink: var(--inkline-primary-foreground);
+  --inkline-state-success: #16a34a;
+  --inkline-state-warning: #d97706;
+  --inkline-state-error: #dc2626;
+  --inkline-state-info: #2563eb;
+  --background: var(--inkline-background);
+  --foreground: var(--inkline-foreground);
+  --card: var(--inkline-card);
+  --card-foreground: var(--inkline-card-foreground);
+  --popover: var(--inkline-popover);
+  --popover-foreground: var(--inkline-popover-foreground);
+  --primary: var(--inkline-primary);
+  --primary-foreground: var(--inkline-primary-foreground);
+  --muted: var(--inkline-muted);
+  --muted-foreground: var(--inkline-muted-foreground);
+  --border: var(--inkline-border);
+  --input: var(--inkline-input);
+  --ring: var(--inkline-ring);
+  --radius-sm: var(--inkline-radius-sm);
+  --radius-md: var(--inkline-radius-md);
+  --radius-lg: var(--inkline-radius-lg);
+  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.04);
+  --font-sans: "Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --font-serif: "Noto Serif SC", "Source Han Serif SC", serif;
+}
+
+/* 暗色主题: 深色编辑感 */
+html.dark {
+  color-scheme: dark;
+  --inkline-background: #1a1a1a;
+  --inkline-foreground: #e5e5e5;
+  --inkline-card: #262626;
+  --inkline-card-foreground: #e5e5e5;
+  --inkline-popover: #262626;
+  --inkline-popover-foreground: #e5e5e5;
+  --inkline-primary: #10b981;
+  --inkline-primary-foreground: #0a0a0a;
+  --inkline-muted: #2d2d2d;
+  --inkline-muted-foreground: #a3a3a3;
+  --inkline-border: #404040;
+  --inkline-input: #404040;
+  --inkline-ring: #10b981;
+  --inkline-surface-2: #333333;
+  --inkline-ink: var(--inkline-foreground);
+  --inkline-ink-2: #a3a3a3;
+  --inkline-ink-3: #737373;
+  --inkline-brand: var(--inkline-primary);
+  --inkline-brand-ink: var(--inkline-primary-foreground);
+  --inkline-state-success: #22c55e;
+  --inkline-state-warning: #f59e0b;
+  --inkline-state-error: #ef4444;
+  --inkline-state-info: #06b6d4;
+  --background: var(--inkline-background);
+  --foreground: var(--inkline-foreground);
+  --card: var(--inkline-card);
+  --card-foreground: var(--inkline-card-foreground);
+  --popover: var(--inkline-popover);
+  --popover-foreground: var(--inkline-popover-foreground);
+  --primary: var(--inkline-primary);
+  --primary-foreground: var(--inkline-primary-foreground);
+  --muted: var(--inkline-muted);
+  --muted-foreground: var(--inkline-muted-foreground);
+  --border: var(--inkline-border);
+  --input: var(--inkline-input);
+  --ring: var(--inkline-ring);
+  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.2), 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--inkline-background);
+  color: var(--inkline-foreground);
+  font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

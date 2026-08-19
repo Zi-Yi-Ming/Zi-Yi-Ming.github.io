@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页 - 我的博客</title>
+    <style id="theme-vars">
+:root {
+  color-scheme: light;
+  /* 亮色主题: 清爽蓝调 */
+  --inkline-background: #f8f9fa;
+  --inkline-foreground: #1e293b;
+  --inkline-card: #ffffff;
+  --inkline-card-foreground: #1e293b;
+  --inkline-popover: #ffffff;
+  --inkline-popover-foreground: #1e293b;
+  --inkline-primary: #2563eb;
+  --inkline-primary-foreground: #ffffff;
+  --inkline-muted: #f1f5f9;
+  --inkline-muted-foreground: #64748b;
+  --inkline-border: #e2e8f0;
+  --inkline-input: #e2e8f0;
+  --inkline-ring: #2563eb;
+  --inkline-radius-sm: 4px;
+  --inkline-radius-md: 10px;
+  --inkline-radius-lg: 16px;
+  --inkline-bg: var(--inkline-background);
+  --inkline-surface: var(--inkline-card);
+  --inkline-surface-2: #eef2f6;
+  --inkline-ink: var(--inkline-foreground);
+  --inkline-ink-2: #64748b;
+  --inkline-ink-3: #94a3b8;
+  --inkline-line: var(--inkline-border);
+  --inkline-brand: var(--inkline-primary);
+  --inkline-brand-ink: var(--inkline-primary-foreground);
+  --inkline-state-success: #16a34a;
+  --inkline-state-warning: #d97706;
+  --inkline-state-error: #dc2626;
+  --inkline-state-info: #2563eb;
+  --background: var(--inkline-background);
+  --foreground: var(--inkline-foreground);
+  --card: var(--inkline-card);
+  --card-foreground: var(--inkline-card-foreground);
+  --popover: var(--inkline-popover);
+  --popover-foreground: var(--inkline-popover-foreground);
+  --primary: var(--inkline-primary);
+  --primary-foreground: var(--inkline-primary-foreground);
+  --muted: var(--inkline-muted);
+  --muted-foreground: var(--inkline-muted-foreground);
+  --border: var(--inkline-border);
+  --input: var(--inkline-input);
+  --ring: var(--inkline-ring);
+  --radius-sm: var(--inkline-radius-sm);
+  --radius-md: var(--inkline-radius-md);
+  --radius-lg: var(--inkline-radius-lg);
+  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.04);
+  --font-sans: "Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --font-serif: "Noto Serif SC", "Source Han Serif SC", serif;
+}
+
+/* 暗色主题: 深色编辑感 */
+html.dark {
+  color-scheme: dark;
+  --inkline-background: #1a1a1a;
+  --inkline-foreground: #e5e5e5;
+  --inkline-card: #262626;
+  --inkline-card-foreground: #e5e5e5;
+  --inkline-popover: #262626;
+  --inkline-popover-foreground: #e5e5e5;
+  --inkline-primary: #10b981;
+  --inkline-primary-foreground: #0a0a0a;
+  --inkline-muted: #2d2d2d;
+  --inkline-muted-foreground: #a3a3a3;
+  --inkline-border: #404040;
+  --inkline-input: #404040;
+  --inkline-ring: #10b981;
+  --inkline-surface-2: #333333;
+  --inkline-ink: var(--inkline-foreground);
+  --inkline-ink-2: #a3a3a3;
+  --inkline-ink-3: #737373;
+  --inkline-brand: var(--inkline-primary);
+  --inkline-brand-ink: var(--inkline-primary-foreground);
+  --inkline-state-success: #22c55e;
+  --inkline-state-warning: #f59e0b;
+  --inkline-state-error: #ef4444;
+  --inkline-state-info: #06b6d4;
+  --background: var(--inkline-background);
+  --foreground: var(--inkline-foreground);
+  --card: var(--inkline-card);
+  --card-foreground: var(--inkline-card-foreground);
+  --popover: var(--inkline-popover);
+  --popover-foreground: var(--inkline-popover-foreground);
+  --primary: var(--inkline-primary);
+  --primary-foreground: var(--inkline-primary-foreground);
+  --muted: var(--inkline-muted);
+  --muted-foreground: var(--inkline-muted-foreground);
+  --border: var(--inkline-border);
+  --input: var(--inkline-input);
+  --ring: var(--inkline-ring);
+  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.2), 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--inkline-background);
+  color: var(--inkline-foreground);
+  font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-background: var(--inkline-background);
+    --color-foreground: var(--inkline-foreground);
+    --color-card: var(--inkline-card);
+    --color-card-foreground: var(--inkline-card-foreground);
+    --color-popover: var(--inkline-popover);
+    --color-popover-foreground: var(--inkline-popover-foreground);
+    --color-primary: var(--inkline-primary);
+    --color-primary-foreground: var(--inkline-primary-foreground);
+    --color-muted: var(--inkline-muted);
+    --color-muted-foreground: var(--inkline-muted-foreground);
+    --color-border: var(--inkline-border);
+    --color-input: var(--inkline-input);
+    --color-ring: var(--inkline-ring);
+    --radius-sm: var(--inkline-radius-sm);
+    --radius-md: var(--inkline-radius-md);
+    --radius-lg: var(--inkline-radius-lg);
+  }
+  @layer base {
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style id="semantic-token-fallback">
+      .bg-background { background-color: var(--inkline-background); }
+      .text-background { color: var(--inkline-background); }
+      .border-background { border-color: var(--inkline-background); }
+      .ring-background { --tw-ring-color: var(--inkline-background); }
+      .bg-foreground { background-color: var(--inkline-foreground); }
+      .text-foreground { color: var(--inkline-foreground); }
+      .border-foreground { border-color: var(--inkline-foreground); }
+      .ring-foreground { --tw-ring-color: var(--inkline-foreground); }
+      .bg-card { background-color: var(--inkline-card); }
+      .text-card { color: var(--inkline-card); }
+      .border-card { border-color: var(--inkline-card); }
+      .ring-card { --tw-ring-color: var(--inkline-card); }
+      .bg-card-foreground { background-color: var(--inkline-card-foreground); }
+      .text-card-foreground { color: var(--inkline-card-foreground); }
+      .border-card-foreground { border-color: var(--inkline-card-foreground); }
+      .ring-card-foreground { --tw-ring-color: var(--inkline-card-foreground); }
+      .bg-popover { background-color: var(--inkline-popover); }
+      .text-popover { color: var(--inkline-popover); }
+      .border-popover { border-color: var(--inkline-popover); }
+      .ring-popover { --tw-ring-color: var(--inkline-popover); }
+      .bg-popover-foreground { background-color: var(--inkline-popover-foreground); }
+      .text-popover-foreground { color: var(--inkline-popover-foreground); }
+      .border-popover-foreground { border-color: var(--inkline-popover-foreground); }
+      .ring-popover-foreground { --tw-ring-color: var(--inkline-popover-foreground); }
+      .bg-primary { background-color: var(--inkline-primary); }
+      .text-primary { color: var(--inkline-primary); }
+      .border-primary { border-color: var(--inkline-primary); }
+      .ring-primary { --tw-ring-color: var(--inkline-primary); }
+      .bg-primary-foreground { background-color: var(--inkline-primary-foreground); }
+      .text-primary-foreground { color: var(--inkline-primary-foreground); }
+      .border-primary-foreground { border-color: var(--inkline-primary-foreground); }
+      .ring-primary-foreground { --tw-ring-color: var(--inkline-primary-foreground); }
+      .bg-muted { background-color: var(--inkline-muted); }
+      .text-muted { color: var(--inkline-muted); }
+      .border-muted { border-color: var(--inkline-muted); }
+      .ring-muted { --tw-ring-color: var(--inkline-muted); }
+      .bg-muted-foreground { background-color: var(--inkline-muted-foreground); }
+      .text-muted-foreground { color: var(--inkline-muted-foreground); }
+      .border-muted-foreground { border-color: var(--inkline-muted-foreground); }
+      .ring-muted-foreground { --tw-ring-color: var(--inkline-muted-foreground); }
+      .bg-border { background-color: var(--inkline-border); }
+      .text-border { color: var(--inkline-border); }
+      .border-border { border-color: var(--inkline-border); }
+      .ring-border { --tw-ring-color: var(--inkline-border); }
+      .bg-input { background-color: var(--inkline-input); }
+      .text-input { color: var(--inkline-input); }
+      .border-input { border-color: var(--inkline-input); }
+      .ring-input { --tw-ring-color: var(--inkline-input); }
+      .bg-ring { background-color: var(--inkline-ring); }
+      .text-ring { color: var(--inkline-ring); }
+      .border-ring { border-color: var(--inkline-ring); }
+      .ring-ring { --tw-ring-color: var(--inkline-ring); }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body class="min-h-screen antialiased" style="background: var(--inkline-background); color: var(--inkline-foreground); font-family: var(--font-sans);">
+    <style>
+      /* ══════════════════════════════════════════
+         Grain / noise texture overlay
+         ══════════════════════════════════════════ */
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        pointer-events: none;
+        opacity: 0.028;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        background-repeat: repeat;
+        background-size: 200px 200px;
+      }
+
+      /* ══════════════════════════════════════════
+         Entrance animations
+         ══════════════════════════════════════════ */
+      @keyframes inkFadeUp {
+        from { opacity: 0; transform: translateY(18px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes inkFadeIn {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+      }
+      .ink-animate-up {
+        animation: inkFadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+      .ink-animate-fade {
+        animation: inkFadeIn 0.6s ease both;
+      }
+      .ink-delay-1 { animation-delay: 0.1s; }
+      .ink-delay-2 { animation-delay: 0.22s; }
+      .ink-delay-3 { animation-delay: 0.34s; }
+      .ink-delay-4 { animation-delay: 0.46s; }
+
+      @media (prefers-reduced-motion: reduce) {
+        .ink-animate-up, .ink-animate-fade {
+          animation: none !important;
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      }
+
+      /* ══════════════════════════════════════════
+         Navigation
+         ══════════════════════════════════════════ */
+      .inkline-nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: transparent;
+        transition: background 200ms ease, box-shadow 200ms ease, backdrop-filter 200ms ease;
+      }
+      .inkline-nav.scrolled {
+        background: color-mix(in srgb, var(--inkline-background) 82%, transparent);
+        backdrop-filter: blur(12px) saturate(1.4);
+        -webkit-backdrop-filter: blur(12px) saturate(1.4);
+        box-shadow: 0 0 0 1px var(--inkline-border);
+      }
+      .inkline-nav-inner {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .inkline-nav-brand {
+        font-family: var(--font-serif);
+        font-weight: 700;
+        font-size: 1.25rem;
+        color: var(--inkline-foreground);
+        text-decoration: none;
+        letter-spacing: 0.02em;
+      }
+      .inkline-nav-links {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .inkline-nav-links a {
+        font-size: 0.875rem;
+        color: var(--inkline-ink-2);
+        text-decoration: none;
+        transition: color 180ms ease;
+        position: relative;
+      }
+      .inkline-nav-links a:hover {
+        color: var(--inkline-foreground);
+      }
+      .inkline-nav-links a.active {
+        color: var(--inkline-foreground);
+        font-weight: 500;
+      }
+      .inkline-nav-links a.active::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        right: 0;
+        height: 1.5px;
+        background: var(--inkline-primary);
+        border-radius: 1px;
+      }
+      .inkline-nav-search {
+        display: inline-flex;
+        align-items: center;
+        color: var(--inkline-ink-3);
+        cursor: pointer;
+        transition: color 180ms ease;
+      }
+      .inkline-nav-search:hover {
+        color: var(--inkline-foreground);
+      }
+      .inkline-nav-theme {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        border: none;
+        border-radius: var(--inkline-radius-sm);
+        background: transparent;
+        color: var(--inkline-ink-3);
+        cursor: pointer;
+        transition: color 180ms ease, background 180ms ease;
+      }
+      .inkline-nav-theme:hover {
+        color: var(--inkline-foreground);
+        background: var(--inkline-muted);
+      }
+      .inkline-nav-theme .theme-icon-light {
+        display: block;
+      }
+      .inkline-nav-theme .theme-icon-dark {
+        display: none;
+      }
+      html.dark .inkline-nav-theme .theme-icon-light {
+        display: none;
+      }
+      html.dark .inkline-nav-theme .theme-icon-dark {
+        display: block;
+      }
+
+      /* ══════════════════════════════════════════
+         Hero
+         ══════════════════════════════════════════ */
+      .inkline-hero {
+        position: relative;
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 120px 24px 56px;
+        overflow: hidden;
+      }
+      /* Radial gradient wash behind hero */
+      .inkline-hero::before {
+        content: '';
+        position: absolute;
+        top: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 700px;
+        height: 500px;
+        border-radius: 50%;
+        background: radial-gradient(ellipse at center,
+          color-mix(in srgb, var(--inkline-primary) 6%, transparent),
+          color-mix(in srgb, var(--inkline-state-warning) 3%, transparent) 50%,
+          transparent 75%);
+        pointer-events: none;
+        z-index: 0;
+      }
+      .inkline-hero > * {
+        position: relative;
+        z-index: 1;
+      }
+      /* Gradient accent line above title */
+      .inkline-hero-accent {
+        display: block;
+        width: 60px;
+        height: 3px;
+        border-radius: 2px;
+        background: linear-gradient(90deg, var(--inkline-primary), var(--inkline-state-warning));
+        margin-bottom: 28px;
+      }
+      .inkline-hero h1 {
+        font-family: var(--font-serif);
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        font-weight: 700;
+        line-height: 1.12;
+        color: var(--inkline-foreground);
+        margin: 0 0 24px;
+        text-wrap: balance;
+        word-break: keep-all;
+        letter-spacing: -0.025em;
+      }
+      .inkline-hero p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--inkline-ink-2);
+        margin: 0;
+        max-width: 580px;
+      }
+      /* Monospace "established" label */
+      .inkline-hero-meta {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 24px;
+        font-family: ui-monospace, "SF Mono", "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        color: var(--inkline-ink-3);
+        text-transform: uppercase;
+      }
+      .inkline-hero-meta::before {
+        content: '';
+        display: block;
+        width: 16px;
+        height: 1px;
+        background: var(--inkline-border);
+      }
+      .inkline-hero hr {
+        margin-top: 48px;
+        border: none;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--inkline-border) 20%, var(--inkline-border) 80%, transparent);
+      }
+
+      /* ══════════════════════════════════════════
+         Stats Strip
+         ══════════════════════════════════════════ */
+      .inkline-stats {
+        background: var(--inkline-muted);
+        box-shadow: 0 0 0 1px color-mix(in srgb, var(--inkline-border) 40%, transparent);
+      }
+      .inkline-stats-inner {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 18px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px 0;
+        font-family: ui-monospace, "SF Mono", "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
+        font-size: 0.8rem;
+        color: var(--inkline-ink-2);
+        letter-spacing: 0.02em;
+      }
+      .inkline-stats-inner .stat-num {
+        font-weight: 600;
+        color: var(--inkline-foreground);
+      }
+      .inkline-stats-inner .stat-sep {
+        margin: 0 12px;
+        color: var(--inkline-ink-3);
+        user-select: none;
+      }
+
+      /* ══════════════════════════════════════════
+         Section shared
+         ══════════════════════════════════════════ */
+      .inkline-section {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 80px 24px;
+      }
+      .inkline-section-title {
+        font-family: var(--font-serif);
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--inkline-foreground);
+        margin: 0 0 40px;
+        text-wrap: balance;
+        word-break: keep-all;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .inkline-section-title::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(90deg, var(--inkline-border), transparent);
+        margin-left: 8px;
+      }
+
+      /* ══════════════════════════════════════════
+         Featured Article (first card)
+         ══════════════════════════════════════════ */
+      .inkline-featured {
+        background: var(--inkline-card);
+        border-radius: var(--inkline-radius-lg);
+        padding: 36px 32px 32px;
+        box-shadow: 0 0 0 1px color-mix(in srgb, var(--inkline-border) 60%, transparent),
+                    0 2px 8px rgba(23, 23, 23, 0.03),
+                    0 12px 40px rgba(23, 23, 23, 0.04);
+        transition: transform 200ms ease, box-shadow 200ms ease;
+        margin-bottom: 48px;
+      }
+      .inkline-featured:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 0 1px color-mix(in srgb, var(--inkline-border) 80%, transparent),
+                    0 4px 12px rgba(23, 23, 23, 0.05),
+                    0 18px 50px rgba(23, 23, 23, 0.06);
+      }
+      .inkline-featured-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--inkline-primary);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 14px;
+      }
+      .inkline-featured-label svg, .inkline-featured-label [data-lucide] {
+        width: 14px;
+        height: 14px;
+      }
+      .inkline-featured-title {
+        font-family: var(--font-serif);
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1.4;
+        margin: 0 0 12px;
+        color: var(--inkline-foreground);
+        text-wrap: balance;
+        word-break: keep-all;
+      }
+      .inkline-featured-title a {
+        color: inherit;
+        text-decoration: none;
+        transition: color 180ms ease;
+      }
+      .inkline-featured-title a:hover {
+        color: var(--inkline-primary);
+      }
+      .inkline-featured-date {
+        font-size: 0.8rem;
+        font-family: ui-monospace, "SF Mono", "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
+        color: var(--inkline-ink-3);
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .inkline-featured-desc {
+        font-size: 0.95rem;
+        line-height: 1.75;
+        color: var(--inkline-ink-2);
+        margin: 0 0 18px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .inkline-featured-read {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--inkline-primary);
+        text-decoration: none;
+        transition: gap 180ms ease;
+      }
+      .inkline-featured-read:hover {
+        gap: 10px;
+      }
+      .inkline-featured-read svg, .inkline-featured-read [data-lucide] {
+        width: 15px;
+        height: 15px;
+      }
+
+      /* ══════════════════════════════════════════
+         Article list (remaining)
+         ══════════════════════════════════════════ */
+      .inkline-article-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .inkline-article-item {
+        padding: 28px 16px;
+        border-radius: var(--inkline-radius-md);
+        transition: background 180ms ease;
+        margin-bottom: 4px;
+      }
+      .inkline-article-item:hover {
+        background: color-mix(in srgb, var(--inkline-muted) 50%, transparent);
+      }
+      .inkline-article-category {
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: var(--inkline-primary);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 8px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .inkline-article-category::before {
+        content: '';
+        display: block;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--inkline-primary);
+        flex-shrink: 0;
+      }
+      .inkline-article-title {
+        font-family: var(--font-serif);
+        font-size: 1.2rem;
+        font-weight: 600;
+        line-height: 1.5;
+        margin: 0 0 8px;
+        color: var(--inkline-foreground);
+      }
+      .inkline-article-title a {
+        color: inherit;
+        text-decoration: none;
+        transition: color 180ms ease;
+      }
+      .inkline-article-title a:hover {
+        color: var(--inkline-primary);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .inkline-article-date {
+        font-size: 0.8rem;
+        font-family: ui-monospace, "SF Mono", "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
+        color: var(--inkline-ink-3);
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .inkline-article-desc {
+        font-size: 0.925rem;
+        line-height: 1.7;
+        color: var(--inkline-ink-2);
+        margin: 0 0 14px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .inkline-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .inkline-tag {
+        font-size: 0.75rem;
+        padding: 3px 10px;
+        border-radius: var(--inkline-radius-sm);
+        background: var(--inkline-muted);
+        color: var(--inkline-ink-2);
+        white-space: nowrap;
+        transition: background 180ms ease;
+      }
+      .inkline-tag:hover {
+        background: var(--inkline-border);
+      }
+
+      /* ══════════════════════════════════════════
+         Categories
+         ══════════════════════════════════════════ */
+      .inkline-categories {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .inkline-category-card {
+        background: var(--inkline-card);
+        border-radius: var(--inkline-radius-md);
+        padding: 28px 24px;
+        box-shadow: 0 0 0 1px color-mix(in srgb, var(--inkline-border) 50%, transparent);
+        transition: box-shadow 200ms ease, transform 200ms ease;
+        cursor: pointer;
+        text-decoration: none;
+        display: block;
+      }
+      .inkline-category-card:hover {
+        box-shadow: 0 0 0 1px var(--inkline-primary),
+                    0 4px 16px rgba(45, 103, 91, 0.08);
+        transform: translateY(-1px);
+      }
+
+      .inkline-category-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: var(--inkline-radius-sm);
+        margin-bottom: 16px;
+      }
+      .inkline-category-icon [data-lucide] {
+        width: 20px;
+        height: 20px;
+      }
+      /* Category tinted backgrounds */
+      .inkline-cat-dev {
+        background: color-mix(in srgb, var(--inkline-state-info) 5%, var(--inkline-card));
+      }
+      .inkline-cat-dev .inkline-category-icon {
+        background: color-mix(in srgb, var(--inkline-state-info) 10%, transparent);
+        color: var(--inkline-state-info);
+      }
+      .inkline-cat-ai {
+        background: color-mix(in srgb, var(--inkline-primary) 5%, var(--inkline-card));
+      }
+      .inkline-cat-ai .inkline-category-icon {
+        background: color-mix(in srgb, var(--inkline-primary) 10%, transparent);
+        color: var(--inkline-primary);
+      }
+      .inkline-cat-literature {
+        background: color-mix(in srgb, var(--inkline-state-warning) 5%, var(--inkline-card));
+      }
+      .inkline-cat-literature .inkline-category-icon {
+        background: color-mix(in srgb, var(--inkline-state-warning) 10%, transparent);
+        color: var(--inkline-state-warning);
+      }
+      .inkline-cat-journal {
+        background: color-mix(in srgb, var(--inkline-state-info) 3%, var(--inkline-card));
+        /* purple-ish via mixing */
+      }
+      .inkline-cat-journal .inkline-category-icon {
+        background: color-mix(in srgb, #6b5fa6 10%, transparent);
+        color: #6b5fa6;
+      }
+      .inkline-cat-other {
+        background: color-mix(in srgb, var(--inkline-muted) 40%, var(--inkline-card));
+      }
+      .inkline-cat-other .inkline-category-icon {
+        background: var(--inkline-muted);
+        color: var(--inkline-ink-3);
+      }
+      .inkline-category-name {
+        font-family: var(--font-serif);
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--inkline-foreground);
+        margin: 0 0 6px;
+        word-break: keep-all;
+      }
+      .inkline-category-desc {
+        font-size: 0.875rem;
+        color: var(--inkline-ink-2);
+        margin: 0 0 10px;
+        line-height: 1.6;
+      }
+      .inkline-category-count {
+        font-size: 0.75rem;
+        font-family: ui-monospace, "SF Mono", "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
+        color: var(--inkline-ink-3);
+      }
+
+      /* ══════════════════════════════════════════
+         Footer
+         ══════════════════════════════════════════ */
+      .inkline-footer {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 32px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 0.8rem;
+        color: var(--inkline-ink-3);
+        border-top: 1px solid var(--inkline-border);
+      }
+
+      /* ══════════════════════════════════════════
+         Responsive
+         ══════════════════════════════════════════ */
+      @media (max-width: 768px) {
+        .inkline-hero { padding: 80px 20px 48px; }
+        .inkline-hero h1 { font-size: clamp(2rem, 8vw, 3rem); }
+        .inkline-section { padding: 48px 20px; }
+        .inkline-nav-links { display: none; }
+        .inkline-categories { grid-template-columns: 1fr; }
+        .inkline-featured { padding: 28px 20px 24px; }
+        .inkline-stats-inner { font-size: 0.72rem; gap: 4px 0; }
+        .inkline-stats-inner .stat-sep { margin: 0 8px; }
+        .inkline-footer { flex-direction: column; gap: 8px; text-align: center; }
+      }
+    </style>
+
+    <!-- Navigation -->
+    <nav class="inkline-nav" id="site-nav">
+      <div class="inkline-nav-inner">
+        <a href="#" class="inkline-nav-brand">我的博客</a>
+        <ul class="inkline-nav-links">
+          <li><a href="#" class="active">首页</a></li>
+          <li><a href="#">前后端</a></li>
+          <li><a href="#">人工智能</a></li>
+          <li><a href="#">其它</a></li>
+          <li><a href="#">日周记总结</a></li>
+          <li><a href="#">关于</a></li>
+          <li><a href="#">归档</a></li>
+          <li>
+            <a href="#" class="inkline-nav-search" aria-label="搜索">
+              <i data-lucide="search" style="width:16px;height:16px;"></i>
+            </a>
+          </li>
+          <li>
+            <button id="theme-toggle" class="inkline-nav-theme" aria-label="切换主题">
+              <i data-lucide="sun" class="theme-icon-light" style="width:16px;height:16px;"></i>
+              <i data-lucide="moon" class="theme-icon-dark" style="width:16px;height:16px;"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Hero -->
+      <section class="inkline-hero">
+        <h1 class="ink-animate-up ink-delay-1">记录技术、思考与生活</h1>
+        <p class="ink-animate-up ink-delay-2">这里是我的个人博客，用 Hugo + GitHub Pages 搭建，记录技术笔记、学习心得与生活随想。</p>
+        <span class="inkline-hero-meta ink-animate-fade ink-delay-3">EST. 2026 &middot; 技术 &middot; 思考 &middot; 生活</span>
+        <hr>
+      </section>
+
+      <!-- Stats Strip -->
+      <div class="inkline-stats ink-animate-fade ink-delay-4">
+        <div class="inkline-stats-inner">
+          <span><span class="stat-num">5</span> 篇文章</span>
+          <span class="stat-sep">&middot;</span>
+          <span><span class="stat-num">4</span> 个分类</span>
+          <span class="stat-sep">&middot;</span>
+          <span>Hugo + PaperMod</span>
+          <span class="stat-sep">&middot;</span>
+          <span>GitHub Pages</span>
+        </div>
+      </div>
+
+      <!-- Latest Articles -->
+      <section class="inkline-section">
+        <h2 class="inkline-section-title">最新文章</h2>
+
+        <!-- Featured Article -->
+        <div class="inkline-featured">
+          <span class="inkline-featured-label">
+            <i data-lucide="sparkles"></i>
+            人工智能
+          </span>
+          <h3 class="inkline-featured-title">
+            <a href="#">Windows下Claude Code插件消失？CC Switch无法保留 enabledPlugins 的排查与修复</a>
+          </h3>
+          <div class="inkline-featured-date">
+            <span>2026-08-09</span>
+            <span style="color: var(--inkline-ink-3);">&middot;</span>
+            <span>约 5 分钟</span>
+          </div>
+          <p class="inkline-featured-desc">最近在 Windows 上使用 Claude Code，并通过 CC Switch 配置自定义模型和本地路由。安装 Claude Code 官方插件后，第一次使用一切正常，但重启 CC Switch 本地路由后，之前安装的官方插件又全部消失了。</p>
+          <div class="inkline-tags" style="margin-bottom: 20px;">
+            <span class="inkline-tag">Claude Code</span>
+            <span class="inkline-tag">CC Switch</span>
+            <span class="inkline-tag">Windows</span>
+          </div>
+          <a href="#" class="inkline-featured-read">
+            阅读更多
+            <i data-lucide="arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Remaining Articles -->
+        <ul class="inkline-article-list">
+          <li class="inkline-article-item">
+            <span class="inkline-article-category">前后端</span>
+            <h3 class="inkline-article-title">
+              <a href="#">微信小程序云托管 Spring Boot 登录失败排查：Docker CA 证书导致 SSLHandshakeException</a>
+            </h3>
+            <div class="inkline-article-date">
+              <span>2026-08-03</span>
+              <span style="color: var(--inkline-ink-3);">&middot;</span>
+              <span>约 4 分钟</span>
+            </div>
+            <p class="inkline-article-desc">HTTPS 请求并不是直接发送 HTTP 数据，而是先建立可信的 TLS 加密连接。本质不是微信接口不通，而是 Java 容器无法确认微信服务器证书链是否可信。</p>
+            <div class="inkline-tags">
+              <span class="inkline-tag">微信小程序</span>
+              <span class="inkline-tag">Spring Boot</span>
+              <span class="inkline-tag">Docker</span>
+            </div>
+          </li>
+          <li class="inkline-article-item">
+            <span class="inkline-article-category">前后端</span>
+            <h3 class="inkline-article-title">
+              <a href="#">Python 环境管理入门：为什么我推荐 Miniconda + Conda</a>
+            </h3>
+            <div class="inkline-article-date">
+              <span>2026-07-13</span>
+              <span style="color: var(--inkline-ink-3);">&middot;</span>
+              <span>约 3 分钟</span>
+            </div>
+            <p class="inkline-article-desc">如果这篇文章帮你理清了 Python 环境管理的思路，欢迎点赞、收藏。你在使用 Conda 或 venv 时还遇到过哪些坑？</p>
+            <div class="inkline-tags">
+              <span class="inkline-tag">Python</span>
+              <span class="inkline-tag">Conda</span>
+              <span class="inkline-tag">环境管理</span>
+            </div>
+          </li>
+          <li class="inkline-article-item">
+            <span class="inkline-article-category">日周记总结</span>
+            <h3 class="inkline-article-title">
+              <a href="#">WorldQuant BRAIN 实战笔记（1）：一个软工学生的一个月研究复盘</a>
+            </h3>
+            <div class="inkline-article-date">
+              <span>2026-06-28</span>
+              <span style="color: var(--inkline-ink-3);">&middot;</span>
+              <span>约 6 分钟</span>
+            </div>
+            <p class="inkline-article-desc">本文原发布于 CSDN，迁移自个人博客。一个软工学生的一个月研究复盘。</p>
+            <div class="inkline-tags">
+              <span class="inkline-tag">WorldQuant</span>
+              <span class="inkline-tag">量化</span>
+              <span class="inkline-tag">复盘</span>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Categories -->
+      <section class="inkline-section">
+        <h2 class="inkline-section-title">分类浏览</h2>
+        <div class="inkline-categories">
+          <a href="#" class="inkline-category-card inkline-cat-dev">
+            <div class="inkline-category-icon">
+              <i data-lucide="code"></i>
+            </div>
+            <h3 class="inkline-category-name">前后端</h3>
+            <p class="inkline-category-desc">Web 开发、后端架构、部署运维</p>
+            <span class="inkline-category-count">2 篇文章</span>
+          </a>
+          <a href="#" class="inkline-category-card inkline-cat-ai">
+            <div class="inkline-category-icon">
+              <i data-lucide="brain"></i>
+            </div>
+            <h3 class="inkline-category-name">人工智能</h3>
+            <p class="inkline-category-desc">AI 工具、模型实践、技术前沿</p>
+            <span class="inkline-category-count">1 篇文章</span>
+          </a>
+          <a href="#" class="inkline-category-card inkline-cat-journal">
+            <div class="inkline-category-icon">
+              <i data-lucide="calendar"></i>
+            </div>
+            <h3 class="inkline-category-name">日周记总结</h3>
+            <p class="inkline-category-desc">学习复盘、周记、月度总结</p>
+            <span class="inkline-category-count">1 篇文章</span>
+          </a>
+          <a href="#" class="inkline-category-card inkline-cat-other">
+            <div class="inkline-category-icon">
+              <i data-lucide="folder"></i>
+            </div>
+            <h3 class="inkline-category-name">其它</h3>
+            <p class="inkline-category-desc">量化研究、平台介绍、杂项笔记</p>
+            <span class="inkline-category-count">0 篇文章</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="inkline-footer">
+      <span>我的博客 &copy; 2026</span>
+      <span>基于 Hugo + PaperMod 搭建</span>
+    </footer>
+
+    <script>
+      // Sticky nav with backdrop on scroll
+      (function() {
+        var nav = document.getElementById('site-nav');
+        if (!nav) return;
+        var ticking = false;
+        window.addEventListener('scroll', function() {
+          if (!ticking) {
+            requestAnimationFrame(function() {
+              if (window.scrollY > 8) {
+                nav.classList.add('scrolled');
+              } else {
+                nav.classList.remove('scrolled');
+              }
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }, { passive: true });
+      })();
+
+      // Theme toggle
+      (function() {
+        var toggle = document.getElementById('theme-toggle');
+        if (!toggle) return;
+        var html = document.documentElement;
+        var stored = localStorage.getItem('theme');
+        if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          html.classList.add('dark');
+        }
+        toggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          html.classList.toggle('dark');
+          localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+      })();
+    </script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
