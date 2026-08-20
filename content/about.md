@@ -70,6 +70,13 @@ AI · LLM · AI Agent · AI Coding · Quantitative Research · Computer Vision
 
 在那之前，先继续折腾。
 
+## 联系方式
+
+- **CSDN**：[blog.csdn.net/2402_87488142](https://blog.csdn.net/2402_87488142)（技术笔记与文章）
+- **GitHub**：[github.com/Zi-Yi-Ming](https://github.com/Zi-Yi-Ming)（开源项目，如 cnb-npc-skill）
+- **QQ**：3125727661
+- **邮箱**：[ziyim2026@gmail.com](mailto:ziyim2026@gmail.com)
+
 ---
 
 *«Stay curious. Keep building.»*
