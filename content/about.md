@@ -16,7 +16,7 @@ Hi, I'm Zi-Yi-Ming.
 
 前段时间花了比较多时间做量化研究，最近又开始学习 OpenMV 以及机器视觉相关的内容。对我来说，学习的过程本身就挺有意思——看到一个没接触过的东西，总会想亲手试一试，看看它到底能做到什么。
 
-## About this blog
+## 关于这个博客
 
 这里算是我的一个小小的个人空间。
 
@@ -30,7 +30,7 @@ Hi, I'm Zi-Yi-Ming.
 
 但至少能知道，自己是怎么一路折腾过来的。
 
-## Quantitative Research
+## 量化研究
 
 前段时间，我主要在 WorldQuant BRAIN 上做量化研究。
 
@@ -44,7 +44,7 @@ Hi, I'm Zi-Yi-Ming.
 
 这种不断试错和迭代的过程，也慢慢影响了我做其他事情的方式。
 
-## Recently
+## 最近
 
 最近没有继续把主要精力放在量化上，而是开始学习 OpenMV。
 
@@ -54,7 +54,7 @@ Hi, I'm Zi-Yi-Ming.
 
 目前还在学习阶段，所以这里以后可能也会出现一些 OpenMV 相关的记录。
 
-## Tech
+## 技术栈
 
 目前主要使用 Java / Python，平时也会接触 Spring Boot、MySQL、Git、Linux 等。
 

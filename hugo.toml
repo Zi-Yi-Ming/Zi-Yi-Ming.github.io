@@ -1,7 +1,6 @@
 baseURL = 'https://Zi-Yi-Ming.github.io/'
 locale = 'zh-cn'
 defaultContentLanguage = 'zh-cn'
-languageCode = 'zh-cn'
 title = '我的博客'
 theme = 'papermod'
 
@@ -9,6 +8,11 @@ enableRobotsTXT = true
 enableEmoji = true
 hasCJKLanguage = true
 paginate = 10
+
+[markup.goldmark.extensions]
+  # 关闭 typographer(旧名 smartypants):避免把 I'm 的直撇号转成 U+2019 弯引号,
+  # 中文字体 fallback 下会被渲染成近乎全宽字符,导致 I 和 m 间距过大
+  typographer = false
 
 [params]
   env = 'production'
