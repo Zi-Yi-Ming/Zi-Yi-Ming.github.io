@@ -1,5 +1,7 @@
 baseURL = 'https://Zi-Yi-Ming.github.io/'
 locale = 'zh-cn'
+defaultContentLanguage = 'zh-cn'
+languageCode = 'zh-cn'
 title = '我的博客'
 theme = 'papermod'
 
@@ -24,6 +26,7 @@ paginate = 10
   ShowToc = true
   TocOpen = false
   hideFooter = false
+  defaultOgImage = '/og-default.png'
 
   [params.homeInfoParams]
     Title = '你好，欢迎来到我的博客 👋'

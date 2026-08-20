@@ -230,7 +230,13 @@ body::before {
   margin-bottom: 14px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+}
+.inkline-ext {
+  color: var(--inkline-primary);
+  font-weight: 600;
+  white-space: nowrap;
 }
 .inkline-featured-desc {
   font-size: 0.95rem;
@@ -301,7 +307,8 @@ body::before {
   margin-bottom: 10px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 8px 12px;
 }
 .inkline-article-desc {
   font-size: 0.925rem;

@@ -142,9 +142,14 @@ main {
   padding-top: 0.5rem;
 }
 
-/* 列表卡片上不显示发布时间、阅读时长等元信息（文章详情页仍显示） */
-.post-entry .entry-footer {
+/* 标签/分类聚合页卡片上不显示元信息（笔记列表页显示日期,文章详情页仍显示） */
+.tag-entry .entry-footer {
   display: none;
+}
+/* 外链文章标记（CSDN ↗）用主色强调 */
+.entry-footer .entry-ext {
+  color: var(--primary);
+  font-weight: 600;
 }
 
 /* 表格在窄屏可横向滚动，不再撑破页面（主题在 table 上设 overflow-x 不可靠） */

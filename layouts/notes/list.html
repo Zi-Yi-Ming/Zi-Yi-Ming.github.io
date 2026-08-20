@@ -84,7 +84,12 @@
   {{- end }}
   {{- if not (.Param "hideMeta") }}
   <footer class="entry-footer">
-    {{- partial "post_meta.html" . -}}
+    <span>{{ .Date | time.Format (default "2006-01-02" site.Params.DateFormat) }}</span>
+    {{- if $external }}
+    <span class="entry-ext">CSDN ↗</span>
+    {{- else }}
+    <span>{{ i18n "read_time" .ReadingTime | default (printf "%d min" .ReadingTime) }}</span>
+    {{- end }}
   </footer>
   {{- end }}
   <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ $link }}"{{ if $external }} target="_blank" rel="noopener"{{ end }}></a>
