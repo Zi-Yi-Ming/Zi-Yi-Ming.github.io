@@ -1,4 +1,4 @@
-# 我的博客
+# Zi-Yi-Ming
 
 个人静态博客，基于 **Hugo + PaperMod 主题**，托管在 **GitHub Pages**（免费，无需自定义域名）。
 

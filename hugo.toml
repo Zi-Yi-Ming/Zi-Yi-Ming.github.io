@@ -1,7 +1,7 @@
 baseURL = 'https://Zi-Yi-Ming.github.io/'
 locale = 'zh-cn'
 defaultContentLanguage = 'zh-cn'
-title = '我的博客'
+title = 'Zi-Yi-Ming'
 theme = 'papermod'
 
 enableRobotsTXT = true
@@ -16,7 +16,7 @@ paginate = 10
 
 [params]
   env = 'production'
-  title = '我的博客'
+  title = 'Zi-Yi-Ming'
   description = '记录我正在学习、构建和折腾的一切'
   author = 'Zi-Yi-Ming'
   DateFormat = '2006-01-02'
@@ -33,7 +33,7 @@ paginate = 10
   defaultOgImage = '/og-default.png'
 
   [params.homeInfoParams]
-    Title = '你好，欢迎来到我的博客 👋'
+    Title = '你好，欢迎来到我的个人空间 👋'
     Content = '一个软件工程学生的个人空间。记录正在学的东西、正在搭的项目，还有一些折腾的过程。'
 
   [[params.socialIcons]]
