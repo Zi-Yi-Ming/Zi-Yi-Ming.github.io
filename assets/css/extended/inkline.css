@@ -434,3 +434,203 @@ body::before {
   .inkline-category-card { padding: 20px 16px; }
   .inkline-category-icon { width: 34px; height: 34px; margin-bottom: 12px; }
 }
+
+/* ── 作品集：Hero CTA ── */
+.inkline-hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 26px 0 0;
+}
+.inkline-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 20px;
+  border-radius: var(--inkline-radius-md);
+  border: 1px solid color-mix(in srgb, var(--inkline-border) 80%, transparent);
+  background: var(--inkline-card);
+  color: var(--inkline-ink-2);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: border-color 180ms ease, color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+.inkline-btn:hover {
+  color: var(--inkline-primary);
+  border-color: color-mix(in srgb, var(--inkline-primary) 45%, transparent);
+  transform: translateY(-1px);
+}
+.inkline-btn-primary {
+  background: var(--inkline-primary);
+  border-color: var(--inkline-primary);
+  color: var(--inkline-primary-foreground);
+}
+.inkline-btn-primary:hover {
+  color: var(--inkline-primary-foreground);
+  border-color: var(--inkline-primary-dim);
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--inkline-primary) 28%, transparent);
+}
+
+/* ── 作品集：区块副标题与更多链接 ── */
+.inkline-section-sub {
+  margin: -20px 0 28px;
+  font-size: 0.9rem;
+  color: var(--inkline-ink-2);
+  line-height: 1.7;
+}
+.inkline-section-more {
+  margin: 28px 0 0;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.inkline-section-more a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--inkline-primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: gap 180ms ease;
+}
+.inkline-section-more a:hover { gap: 10px; }
+.inkline-section-more a svg { width: 14px; height: 14px; }
+.inkline-section-more .inkline-sep { color: var(--inkline-ink-3); user-select: none; }
+
+/* ── 作品集：项目卡片 ── */
+.inkline-projects {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.inkline-project {
+  display: flex;
+  flex-direction: column;
+  background: var(--inkline-card);
+  border-radius: var(--inkline-radius-lg);
+  padding: 28px 26px 24px;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--inkline-border) 55%, transparent),
+              0 2px 8px rgba(23, 23, 23, 0.03),
+              0 12px 36px rgba(23, 23, 23, 0.04);
+  transition: box-shadow 200ms ease, transform 200ms ease;
+}
+.inkline-project:hover {
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--inkline-primary) 60%, transparent),
+              0 6px 18px rgba(23, 23, 23, 0.05),
+              0 18px 44px rgba(23, 23, 23, 0.06);
+  transform: translateY(-2px);
+}
+.inkline-project-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.inkline-project-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--inkline-primary);
+  background: color-mix(in srgb, var(--inkline-primary) 10%, transparent);
+  border-radius: 999px;
+  padding: 4px 12px;
+  white-space: nowrap;
+}
+.inkline-project-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.inkline-project-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--inkline-radius-sm);
+  color: var(--inkline-ink-3);
+  transition: color 180ms ease, background 180ms ease;
+}
+.inkline-project-links a:hover {
+  color: var(--inkline-primary);
+  background: color-mix(in srgb, var(--inkline-primary) 8%, transparent);
+}
+.inkline-project-links svg { width: 17px; height: 17px; }
+.inkline-project-title {
+  font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.45;
+  margin: 0 0 10px;
+  color: var(--inkline-foreground);
+  word-break: keep-all;
+}
+.inkline-project-title a { color: inherit; text-decoration: none; transition: color 180ms ease; }
+.inkline-project-title a:hover { color: var(--inkline-primary); }
+.inkline-project-desc {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--inkline-ink-2);
+  margin: 0 0 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
+}
+
+/* ── 作品集：技术栈 ── */
+.inkline-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.inkline-stack-chip {
+  font-family: var(--code-font-family);
+  font-size: 0.82rem;
+  padding: 6px 14px;
+  border-radius: var(--inkline-radius-sm);
+  background: var(--inkline-muted);
+  color: var(--inkline-ink-2);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--inkline-border) 60%, transparent);
+  white-space: nowrap;
+}
+.inkline-stack-chip-dim {
+  background: transparent;
+  color: var(--inkline-ink-3);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--inkline-border) 70%, transparent);
+}
+.inkline-stack-interests {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+.inkline-stack-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--inkline-ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-right: 4px;
+}
+
+/* ── 作品集：响应式 ── */
+@media (max-width: 768px) {
+  .inkline-projects { grid-template-columns: 1fr; }
+  .inkline-section-sub { margin-top: -16px; }
+}
+@media (max-width: 480px) {
+  .inkline-btn { padding: 8px 16px; font-size: 0.82rem; }
+  .inkline-project { padding: 22px 18px 18px; }
+  .inkline-project-status { font-size: 0.68rem; }
+}

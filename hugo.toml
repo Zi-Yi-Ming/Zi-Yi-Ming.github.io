@@ -17,7 +17,7 @@ paginate = 10
 [params]
   env = 'production'
   title = 'Zi-Yi-Ming'
-  description = '记录我正在学习、构建和折腾的一切'
+  description = 'Zi-Yi-Ming 的个人作品集：开源工具、量化研究、云服务与机器视觉'
   author = 'Zi-Yi-Ming'
   DateFormat = '2006-01-02'
   defaultTheme = 'auto'
@@ -46,20 +46,25 @@ paginate = 10
     url = '/'
     weight = 1
   [[menu.main]]
-    identifier = 'toolbox'
-    name = '自用清单'
-    url = '/toolbox/'
+    identifier = 'projects'
+    name = '项目'
+    url = '/projects/'
     weight = 2
-  [[menu.main]]
-    identifier = 'notes'
-    name = '博客笔记'
-    url = '/notes/'
-    weight = 3
   [[menu.main]]
     identifier = 'about'
     name = '关于'
     url = '/about/'
+    weight = 3
+  [[menu.main]]
+    identifier = 'toolbox'
+    name = '自用清单'
+    url = '/toolbox/'
     weight = 4
+  [[menu.main]]
+    identifier = 'notes'
+    name = '笔记'
+    url = '/notes/'
+    weight = 5
   [[menu.main]]
     identifier = 'search'
     name = '搜索'
