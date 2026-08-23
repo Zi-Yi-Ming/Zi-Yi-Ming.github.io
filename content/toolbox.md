@@ -7,7 +7,7 @@ hideAuthor: true
 hideMeta: true
 ---
 
-这里只列我实际用过、觉得值得留档的工具和插件，持续更新；常规必备的（浏览器、输入法这类人手一个的）就不占篇幅了。
+这里只列我实际用过、觉得值得留档的工具和插件，持续更新；常规必备的就不占篇幅了。
 
 ## 开发环境
 
@@ -16,21 +16,15 @@ hideMeta: true
 - **推荐理由**：装 Miniconda 而不是 Anaconda，启动快、体积小，`conda create -n xxx python=3.x` 一条命令搞定环境。
 - **官网**：[docs.conda.io/miniconda](https://docs.conda.io/en/latest/miniconda.html)
 
-## 编辑器与插件
-
-### Visual Studio Code
-- **用途**：主力代码编辑器。
-- **官网**：[code.visualstudio.com](https://code.visualstudio.com/)
-
-**好用插件推荐：**
+## VSCode插件
 
 | 插件 | 用途 |
 | --- | --- |
-| markdownlint + Prettier + ESLint | 文档与代码规范、格式化 |
-| Rainbow CSV | CSV 文件按列着色，数据文件一目了然 |
-| Dev Containers | 一键进入 Docker 容器开发环境 |
-| GitLens | 查看代码 blame、提交历史、分支关系 |
-| Jupyter | 直接在 VSCode 里跑 .ipynb，配合数据分析与量化研究 |
+| [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) | 文档与代码规范、格式化 |
+| [Rainbow CSV](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv) | CSV 文件按列着色，数据文件一目了然 |
+| [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) | 一键进入 Docker 容器开发环境 |
+| [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) | 查看代码 blame、提交历史、分支关系 |
+| [Jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter) | 直接在 VSCode 里跑 .ipynb，配合数据分析与量化研究 |
 
 ## 笔记软件
 
@@ -68,17 +62,17 @@ hideMeta: true
 
 ### ZCode
 - **用途**：桌面端 AI 助手。
-- **推荐理由**：目前使用体验最好的桌面端 AI 助手。
+- **推荐理由**：目前使用体验最好的桌面端 AI 助手，只是偶尔会有bug。
 - **官网**：[zcode.ai](https://zcode.ai/)
 
 ### AtomCode
 - **用途**：终端里的 AI 编码助手。
-- **推荐理由**：缓存命中率高，比较推荐刚开始用终端助手开发的小白用。
+- **推荐理由**：缓存命中率高，适配国内的生态，比较推荐刚开始用终端助手开发的小白用。
 - **官网**：[atomcode.atomgit.com](https://atomcode.atomgit.com/)
 
 ### Claude Code
-- **用途**：终端里的 AI 编程助手，配合本博客写文章、改代码。
-- **推荐理由**：上下文管理强，适合在项目目录里直接干活。
+- **用途**：啥都能干
+- **推荐理由**：AI 编程最高的山，最长的河。
 - **官网**：[anthropic.com/claude-code](https://www.anthropic.com/claude-code)
 
 ### cnb-npc-skill（自研）
@@ -91,7 +85,7 @@ hideMeta: true
 
 ### GitHub
 - **用途**：开源社区与代码托管。
-- **推荐理由**：唯一真神。强烈建议有教育邮箱的都去申一个 GitHub Student Developer Pack 学生认证，免费额度与资源非常多。
+- **推荐理由**：唯一真神。强烈建议有教育邮箱的都去申一个 GitHub Student Developer Pack 学生认证，免费资源非常多，且还在持续更新。
 - **官网**：[github.com](https://github.com/)
 
 ### Google Skills

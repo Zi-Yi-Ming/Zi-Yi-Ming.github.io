@@ -9,6 +9,10 @@ enableEmoji = true
 hasCJKLanguage = true
 paginate = 10
 
+# 让首页输出 index.json，供搜索页 (fastsearch.js) 抓取建索引
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']
+
 [markup.goldmark.extensions]
   # 关闭 typographer(旧名 smartypants):避免把 I'm 的直撇号转成 U+2019 弯引号,
   # 中文字体 fallback 下会被渲染成近乎全宽字符,导致 I 和 m 间距过大
