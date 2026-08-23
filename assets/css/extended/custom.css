@@ -41,6 +41,8 @@
   --body-font-family: "Inter", "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
   --code-font-family: ui-monospace, "SF Mono", "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
   --radius: 10px;
+  /* 导航宽度与首页内容容器对齐（1200px + gap*2） */
+  --nav-width: 1200px;
 }
 
 /* 注意: 必须用 :root[data-theme="dark"] 与 PaperMod 同特异性,
@@ -140,6 +142,11 @@ code {
 /* 页面顶部留白 */
 main {
   padding-top: 0.5rem;
+}
+
+/* 首页（inkline 布局）在 PC 宽屏下撑开主容器，避免内容挤在中间一条 */
+.main:has(.inkline-hero) {
+  max-width: calc(1200px + var(--gap) * 2);
 }
 
 /* 标签/分类聚合页卡片上不显示元信息（笔记列表页显示日期,文章详情页仍显示） */

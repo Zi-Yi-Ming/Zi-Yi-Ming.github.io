@@ -22,7 +22,7 @@ body::before {
 /* ── Hero ── */
 .inkline-hero {
   position: relative;
-  max-width: 960px;
+  max-width: 1160px;
   margin: 0 auto;
   padding: 96px 24px 48px;
   overflow: hidden;
@@ -91,7 +91,7 @@ body::before {
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--inkline-border) 40%, transparent);
 }
 .inkline-stats-inner {
-  max-width: 960px;
+  max-width: 1160px;
   margin: 0 auto;
   padding: 16px 24px;
   display: flex;
@@ -109,7 +109,7 @@ body::before {
 
 /* ── 区块 ── */
 .inkline-section {
-  max-width: 960px;
+  max-width: 1160px;
   margin: 0 auto;
   padding: 72px 24px;
 }
@@ -213,6 +213,14 @@ body::before {
 
 /* ── 文章列表 ── */
 .inkline-article-list { list-style: none; margin: 0; padding: 0; }
+@media (min-width: 769px) {
+  /* 宽屏下笔记列表双列展示，避免内容聚在中间一条 */
+  .inkline-article-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 32px;
+  }
+}
 .inkline-article-item {
   padding: 28px 16px;
   border-radius: var(--inkline-radius-md);
@@ -332,7 +340,7 @@ body::before {
 
 /* ── 页脚 ── */
 .inkline-footer {
-  max-width: 960px;
+  max-width: 1160px;
   margin: 0 auto;
   padding: 32px 24px 48px;
   position: relative;
@@ -451,7 +459,7 @@ body::before {
 /* ── 作品集：项目卡片 ── */
 .inkline-projects {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: 16px;
 }
 .inkline-project {
@@ -574,7 +582,6 @@ body::before {
 
 /* ── 作品集：响应式 ── */
 @media (max-width: 768px) {
-  .inkline-projects { grid-template-columns: 1fr; }
   .inkline-section-sub { margin-top: -16px; }
 }
 @media (max-width: 480px) {
