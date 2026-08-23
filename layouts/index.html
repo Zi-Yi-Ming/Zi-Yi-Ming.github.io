@@ -1,12 +1,20 @@
 {{- define "main" }}
 {{- $projects := where (where .Site.RegularPages "Params.draft" "!=" true) "Section" "eq" "projects" }}
 {{- $notes := where (where .Site.RegularPages "Params.draft" "!=" true) "Section" "eq" "notes" }}
-{{- $stack := slice "Java" "Python" "Spring Boot" "MySQL" "Git" "Linux" "Node.js" "Hugo" }}
+{{- $stack := slice
+  (dict "name" "Java" "url" "https://www.java.com/")
+  (dict "name" "Python" "url" "https://www.python.org/")
+  (dict "name" "Spring Boot" "url" "https://spring.io/projects/spring-boot")
+  (dict "name" "MySQL" "url" "https://www.mysql.com/")
+  (dict "name" "Git" "url" "https://git-scm.com/")
+  (dict "name" "Linux" "url" "https://www.linux.org/")
+  (dict "name" "Node.js" "url" "https://nodejs.org/")
+  (dict "name" "Hugo" "url" "https://gohugo.io/")
+}}
 {{- $interests := slice "AI / LLM" "AI Agent / AI Coding" "Quantitative Research" "Computer Vision" }}
 <main>
   <!-- Hero -->
   <section class="inkline-hero">
-    <span class="inkline-hero-accent"></span>
     <h1>你好，我是 Zi-Yi-Ming。</h1>
     <p>软件工程学生，写代码、做项目、折腾新东西。这里是作品集——<a href="https://blog.csdn.net/2402_87488142">CSDN</a> 放技术文章，这里放我做过的东西。</p>
     <!-- 最近在做什么：修改这里更新首页动态 -->
@@ -63,7 +71,7 @@
   <section class="inkline-section">
     <h2 class="inkline-section-title">技术栈</h2>
     <div class="inkline-stack">
-      {{ range $stack }}<span class="inkline-stack-chip">{{ . }}</span>{{ end }}
+      {{ range $stack }}<a class="inkline-stack-chip" href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a>{{ end }}
     </div>
     <p class="inkline-stack-interests">
       <span class="inkline-stack-label">正在关注</span>
