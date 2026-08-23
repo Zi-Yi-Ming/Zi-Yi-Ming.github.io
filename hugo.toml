@@ -33,7 +33,7 @@ paginate = 10
   defaultOgImage = '/og-default.png'
 
   [params.homeInfoParams]
-    Title = '你好，欢迎来到我的个人空间 👋'
+    Title = '你好，欢迎来到我的个人空间'
     Content = '一个软件工程学生的个人空间。记录正在学的东西、正在搭的项目，还有一些折腾的过程。'
 
   [[params.socialIcons]]

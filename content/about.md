@@ -79,4 +79,4 @@ AI · LLM · AI Agent · AI Coding · Quantitative Research · Computer Vision
 
 ---
 
-*«Stay curious. Keep building.»*
+*先写到这里，继续折腾去了。*

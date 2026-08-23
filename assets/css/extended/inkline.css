@@ -19,25 +19,6 @@ body::before {
   opacity: 0.02;
 }
 
-/* ── 入场动画 (尊重 reduced-motion) ── */
-@keyframes inkFadeUp {
-  from { opacity: 0; transform: translateY(18px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes inkFadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-.ink-animate-up  { animation: inkFadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
-.ink-animate-fade{ animation: inkFadeIn 0.6s ease both; }
-.ink-delay-1 { animation-delay: 0.1s; }
-.ink-delay-2 { animation-delay: 0.22s; }
-.ink-delay-3 { animation-delay: 0.34s; }
-.ink-delay-4 { animation-delay: 0.46s; }
-@media (prefers-reduced-motion: reduce) {
-  .ink-animate-up, .ink-animate-fade { animation: none !important; opacity: 1 !important; transform: none !important; }
-}
-
 /* ── Hero ── */
 .inkline-hero {
   position: relative;
@@ -89,24 +70,6 @@ body::before {
   margin: 0;
   max-width: 580px;
 }
-.inkline-hero-meta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 24px;
-  font-family: var(--code-font-family);
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  color: var(--inkline-ink-3);
-  text-transform: uppercase;
-}
-.inkline-hero-meta::before {
-  content: '';
-  display: block;
-  width: 16px;
-  height: 1px;
-  background: var(--inkline-border);
-}
 .inkline-hero hr {
   margin-top: 48px;
   border: none;
@@ -114,26 +77,13 @@ body::before {
   background: linear-gradient(90deg, transparent, var(--inkline-border) 20%, var(--inkline-border) 80%, transparent);
 }
 
-/* ── Currently ── */
-.inkline-currently {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 6px 14px;
-  margin: 22px 0 0;
-  font-family: var(--code-font-family);
-  font-size: 0.8rem;
-  color: var(--inkline-ink-2);
-  line-height: 1.6;
-}
-.inkline-currently-label {
+/* ── 最近在做什么 ── */
+.inkline-now {
+  margin: 18px 0 0;
+  font-size: 1rem;
+  line-height: 1.8;
   color: var(--inkline-ink-3);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 0.72rem;
 }
-.inkline-currently-item { white-space: nowrap; }
-.inkline-currently-item .k { color: var(--inkline-ink-3); margin-right: 6px; }
 
 /* ── 数据条 ── */
 .inkline-stats {
@@ -348,7 +298,7 @@ body::before {
   display: block;
 }
 .inkline-category-card:hover {
-  box-shadow: 0 0 0 1px var(--inkline-primary), 0 4px 16px rgba(45, 103, 91, 0.08);
+  box-shadow: 0 0 0 1px var(--inkline-primary), 0 4px 16px rgba(177, 62, 47, 0.08);
   transform: translateY(-1px);
 }
 .inkline-category-icon {
@@ -420,9 +370,7 @@ body::before {
   .inkline-hero { padding: 48px 16px 32px; }
   .inkline-hero h1 { font-size: clamp(1.75rem, 7vw, 2.5rem); }
   .inkline-hero p { font-size: 1rem; }
-  .inkline-hero-meta { font-size: 0.68rem; letter-spacing: 0.1em; }
-  .inkline-currently { font-size: 0.72rem; gap: 4px 10px; margin-top: 18px; }
-  .inkline-currently-label { font-size: 0.66rem; }
+  .inkline-now { font-size: 0.95rem; }
   .inkline-section { padding: 40px 16px; }
   .inkline-section-title { font-size: 1.25rem; margin-bottom: 28px; }
   .inkline-featured { padding: 22px 16px 18px; }
