@@ -83,7 +83,7 @@ Windows 上按文件名搜文件，基本秒出，比资源管理器自带的搜
 
 ### GitHub
 
-开源社区，有教育邮箱的建议申一个 Student Developer Pack，免费资源很多，还在持续更新。[官网](https://github.com/)
+开源社区，唯一真神。有教育邮箱的建议申一个 Student Developer Pack，免费资源很多，还在持续更新。[官网](https://github.com/)
 
 ### Google Skills
 
