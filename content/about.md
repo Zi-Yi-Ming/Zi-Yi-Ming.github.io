@@ -54,6 +54,8 @@ Hi, I'm Zi-Yi-Ming.
 
 目前还在学习阶段，所以这里以后可能也会出现一些 OpenMV 相关的记录。
 
+另外也开始给开源项目提代码了：修了 [vLLM Semantic Router](https://github.com/vllm-project/semantic-router) 安装脚本忽略 Podman 的问题（[PR #3294](https://github.com/vllm-project/semantic-router/pull/3294) 已合入主仓库），详情见[项目页](/projects/vllm-semantic-router-contribution/)。
+
 ## 技术栈
 
 目前主要使用 Java / Python，平时也会接触 Spring Boot、MySQL、Git、Linux 等。
