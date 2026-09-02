@@ -1,9 +1,24 @@
 /*
  * 个人博客定制样式 —— 纸墨编辑风 (inkline)
- * 来源: blog-editorial-ui/colors_and_type.css (Trae 设计稿)
  * 通过覆盖 PaperMod 的 CSS 变量让全站统一风格
  */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&display=swap');
+
+/* 站内自托管 Noto Serif SC 子集（scripts/subset-fonts.py 生成，只含站内用字）：
+   不用 Google Fonts —— 国内网络不可达时会阻塞渲染，观感也随网络漂移 */
+@font-face {
+  font-family: "Noto Serif SC";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/noto-serif-sc-w600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Noto Serif SC";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/noto-serif-sc-w700.woff2") format("woff2");
+}
 
 :root {
   color-scheme: light;
@@ -38,7 +53,8 @@
   --code-block-bg: #26221b;
   --code-block-text: #e8e0d0;
   --selection: #f2d8c9;
-  --body-font-family: "Inter", "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+  /* 本地字体栈：英文走系统 sans，中文走平台自带黑体，零外部请求 */
+  --body-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Source Han Sans SC", "Noto Sans CJK SC", system-ui, sans-serif;
   --code-font-family: ui-monospace, "SF Mono", "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
   --radius: 10px;
   /* 导航宽度与首页内容容器对齐（1200px + gap*2） */

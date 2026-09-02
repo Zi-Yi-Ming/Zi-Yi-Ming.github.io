@@ -49,7 +49,8 @@ body::before {
   margin: 18px 0 0;
   font-size: 1rem;
   line-height: 1.8;
-  color: var(--inkline-ink-3);
+  /* 用 ink-2 而非 ink-3：小号正文需满足 WCAG AA ≥4.5:1 */
+  color: var(--inkline-ink-2);
 }
 
 /* ── 区块 ── */
