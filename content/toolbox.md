@@ -75,7 +75,7 @@ Windows 上按文件名搜文件，基本秒出，比资源管理器自带的搜
 
 让 CNB 的 CodeBuddy NPC 替我上班：一句话派发任务，云端 AI 在仓库里把活干完、提 PR（或只读评审出报告），我只管验收。把“建仓库→推代码→@CodeBuddy→等结果”这套手工流程压缩成一条命令，不占主力 agent 的上下文和模型并发，目前免费，实测 240 秒内 NPC 提交 PR。
 
-[cnb-npc-skill](https://github.com/Zi-Yi-Ming/cnb-npc-skill) · [项目笔记](/notes/cnb-npc-skill/)
+[cnb-npc-skill](https://github.com/Zi-Yi-Ming/cnb-npc-skill) · [项目实践（CSDN）](https://blog.csdn.net/2402_87488142/article/details/164303415)
 
 ## 学习与资源
 

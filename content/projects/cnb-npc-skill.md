@@ -22,4 +22,4 @@ node bin/cnb-npc.js run "评审一下这个模块的设计" --no-work-mode
 - 双模式：默认工作模式提 PR；`--no-work-mode` 只读评审，配套 `comments --wait` 收报告、`comment` 多轮追问、`api` 通用透传
 - 零依赖、MIT 协议，内置 SKILL.md，可被 AI 助手直接调用，带 evals 评测套件与 CI
 - 实测 **240 秒内** NPC 提交 PR（[Issue/PR 实录](https://cnb.cool/ziyim/hello-npc)）
-- 完整技术拆解见笔记：[cnb-npc-skill 项目实践](/notes/cnb-npc-skill/)
+- 完整技术拆解发布在 CSDN：[cnb-npc-skill 项目实践](https://blog.csdn.net/2402_87488142/article/details/164303415)
