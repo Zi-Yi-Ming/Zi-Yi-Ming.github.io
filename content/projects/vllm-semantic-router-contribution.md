@@ -2,6 +2,7 @@
 title: "vLLM Semantic Router 上游贡献"
 date: 2026-09-02
 weight: 5
+featured: 4
 description: "给 vllm-project/semantic-router（5.5k★）合入的 PR：让 install.sh 识别已装的 Podman 而不是重复装 Docker，运行时写入 runtime.env 自动生效。目前 DE 组成员申请中。"
 tech: ["vLLM", "Shell", "容器", "开源贡献"]
 status: "上游已合并 · DE 组申请中"

@@ -53,6 +53,89 @@ body::before {
   color: var(--inkline-ink-2);
 }
 
+/* ── Currently 轻量块 ── */
+.inkline-currently {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.inkline-currently-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--inkline-primary);
+  border: 1px solid color-mix(in srgb, var(--inkline-primary) 45%, transparent);
+  border-radius: 999px;
+  padding: 3px 12px;
+  margin: 0 0 14px;
+}
+.inkline-currently .inkline-now {
+  max-width: 640px;
+}
+
+/* ── Featured Projects ── */
+.inkline-feature-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+@media (min-width: 769px) {
+  .inkline-feature-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.inkline-feature-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 26px 26px 20px;
+  border: 1px solid color-mix(in srgb, var(--inkline-border) 70%, transparent);
+  border-radius: var(--inkline-radius-md);
+  background-color: var(--inkline-card);
+  box-shadow: 0 1px 2px rgba(23, 23, 23, 0.03), 0 8px 24px rgba(23, 23, 23, 0.03);
+  transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+.inkline-feature-card:hover {
+  border-color: color-mix(in srgb, var(--inkline-primary) 45%, transparent);
+  box-shadow: 0 10px 28px rgba(23, 23, 23, 0.06);
+  transform: translateY(-2px);
+}
+.inkline-feature-card .inkline-item-desc {
+  flex: 1;
+}
+.inkline-card-tech {
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--inkline-ink-3);
+  margin: 0;
+}
+.inkline-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 8px 0 0;
+  font-size: 0.875rem;
+}
+.inkline-card-status {
+  color: var(--inkline-ink-2);
+}
+.inkline-card-more {
+  color: var(--inkline-primary);
+  text-decoration: none;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.inkline-card-more:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* ── 区块 ── */
 .inkline-section {
   max-width: 1160px;
@@ -141,6 +224,69 @@ body::before {
   .inkline-hero { padding: 64px 20px 40px; }
   .inkline-hero h1 { font-size: clamp(2rem, 8vw, 3rem); }
   .inkline-section { padding: 48px 20px; }
+}
+
+/* ── Projects 列表页 ── */
+.proj-section {
+  margin: 40px 0;
+}
+.proj-group-title {
+  font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--inkline-foreground);
+  margin: 0 0 20px;
+}
+.proj-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+@media (min-width: 769px) {
+  .proj-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.proj-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 24px;
+  border: 1px solid color-mix(in srgb, var(--inkline-border) 70%, transparent);
+  border-radius: var(--inkline-radius-md);
+  background-color: var(--inkline-card);
+  box-shadow: 0 1px 2px rgba(23, 23, 23, 0.03), 0 8px 24px rgba(23, 23, 23, 0.03);
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+.proj-card:hover {
+  border-color: color-mix(in srgb, var(--inkline-primary) 45%, transparent);
+  box-shadow: 0 10px 28px rgba(23, 23, 23, 0.06);
+}
+.proj-card .inkline-item-desc {
+  flex: 1;
+}
+.proj-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  margin: 8px 0 0;
+  font-size: 0.875rem;
+}
+.proj-status {
+  color: var(--inkline-ink-2);
+}
+.proj-links a {
+  color: var(--inkline-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+.proj-links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 @media (max-width: 480px) {
   .inkline-hero { padding: 48px 16px 32px; }

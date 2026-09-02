@@ -1,0 +1,74 @@
+{{- define "main" }}
+{{- $projects := where (where .Site.RegularPages "Params.draft" "!=" true) "Section" "eq" "projects" }}
+{{- $featured := where $projects "Params.featured" "ne" nil }}
+{{- $others := where $projects "Params.featured" "eq" nil }}
+
+<header class="page-header">
+  {{- partial "breadcrumbs.html" . }}
+  <h1>{{ .Title }}</h1>
+  {{- with .Description }}
+  <div class="post-description">{{ . | markdownify }}</div>
+  {{- end }}
+</header>
+
+{{- with .Content }}
+<div class="post-content md-content">
+  {{ partial "anchored_headings.html" . }}
+</div>
+{{- end }}
+
+<!-- Featured -->
+<section class="proj-section">
+  <h2 class="proj-group-title">Featured 重点项目</h2>
+  <ul class="proj-grid">
+    {{- range sort $featured "Params.featured" "asc" }}
+    {{- $link := .RelPermalink }}
+    {{- $external := false }}
+    {{- with .Params.csdn }}{{ $link = . }}{{ $external = true }}{{ else }}{{ with .Params.github }}{{ $link = . }}{{ $external = true }}{{ end }}{{ end }}
+    <li class="proj-card">
+      <h3 class="inkline-item-title"><a href="{{ $link }}"{{ if $external }} target="_blank" rel="noopener"{{ end }}>{{ .Title }}</a></h3>
+      <p class="inkline-item-desc">{{ .Description }}</p>
+      {{- with .Params.tech }}
+      <p class="inkline-card-tech">{{ delimit . " · " }}</p>
+      {{- end }}
+      {{- if or .Params.status .Params.github .Params.notes }}
+      <p class="proj-links">
+        {{- with .Params.status }}<span class="proj-status">{{ . }}</span>{{ end }}
+        {{- if .Params.github }}<a href="{{ .Params.github }}" target="_blank" rel="noopener">GitHub ↗</a>{{ end }}
+        {{- range .Params.notes }}<a href="{{ . }}">笔记</a>{{ end }}
+      </p>
+      {{- end }}
+    </li>
+    {{- end }}
+  </ul>
+</section>
+
+<!-- Others -->
+{{- with $others }}
+<section class="proj-section">
+  <h2 class="proj-group-title">其他项目</h2>
+  <ul class="proj-grid">
+    {{- range sort . "Weight" "asc" }}
+    {{- $link := .RelPermalink }}
+    {{- $external := false }}
+    {{- with .Params.csdn }}{{ $link = . }}{{ $external = true }}{{ else }}{{ with .Params.github }}{{ $link = . }}{{ $external = true }}{{ end }}{{ end }}
+    <li class="proj-card">
+      <h3 class="inkline-item-title"><a href="{{ $link }}"{{ if $external }} target="_blank" rel="noopener"{{ end }}>{{ .Title }}</a></h3>
+      <p class="inkline-item-desc">{{ .Description }}</p>
+      {{- with .Params.tech }}
+      <p class="inkline-card-tech">{{ delimit . " · " }}</p>
+      {{- end }}
+      {{- if or .Params.status .Params.github .Params.notes }}
+      <p class="proj-links">
+        {{- with .Params.status }}<span class="proj-status">{{ . }}</span>{{ end }}
+        {{- if .Params.github }}<a href="{{ .Params.github }}" target="_blank" rel="noopener">GitHub ↗</a>{{ end }}
+        {{- range .Params.notes }}<a href="{{ . }}">笔记</a>{{ end }}
+      </p>
+      {{- end }}
+    </li>
+    {{- end }}
+  </ul>
+</section>
+{{- end }}
+
+{{- end }}{{- /* end main */ -}}

@@ -1,36 +1,51 @@
 {{- define "main" }}
 {{- $projects := where (where .Site.RegularPages "Params.draft" "!=" true) "Section" "eq" "projects" }}
+{{- $featured := where $projects "Params.featured" "ne" nil }}
 {{- $notes := where (where .Site.RegularPages "Params.draft" "!=" true) "Section" "eq" "notes" }}
 <main>
   <!-- Hero -->
   <section class="inkline-hero">
     <h1>你好，我是 Zi-Yi-Ming。</h1>
     <p>软件工程学生，写代码、做项目、折腾新东西。这里是作品集——<a href="https://blog.csdn.net/2402_87488142">CSDN</a> 放技术文章，这里放我做过的东西。</p>
-    <!-- 最近在做什么：修改这里更新首页动态 -->
-    <p class="inkline-now">最近在给 vLLM Semantic Router 提代码（一个 PR 已合入主仓库），也在学 OpenMV 和机器视觉，平时用 Java / Python 写东西。</p>
   </section>
 
-  <!-- 项目 -->
+  <!-- Currently：修改这里更新首页动态 -->
+  <section class="inkline-currently">
+    <p class="inkline-currently-label">Currently</p>
+    <p class="inkline-now">在给 vLLM Semantic Router 提代码（PR #3294 已合入主仓库，DE 组成员申请中），在学 OpenMV 和机器视觉，平时用 Java / Python 写东西。</p>
+  </section>
+
+  <!-- Featured Projects -->
   <section class="inkline-section">
-    <h2 class="inkline-section-title">项目</h2>
-    <ul class="inkline-project-list">
-      {{ range $projects }}
+    <h2 class="inkline-section-title">Featured Projects</h2>
+    <ul class="inkline-feature-grid">
+      {{- range sort $featured "Params.featured" "asc" }}
       {{- $link := .RelPermalink }}
-      {{- with .Params.csdn }}{{ $link = . }}{{ else }}{{ with .Params.github }}{{ $link = . }}{{ end }}{{ end }}
-      <li class="inkline-project-item">
-        <h3 class="inkline-item-title"><a href="{{ $link }}">{{ .Title }}</a></h3>
+      {{- $external := false }}
+      {{- with .Params.csdn }}{{ $link = . }}{{ $external = true }}{{ else }}{{ with .Params.github }}{{ $link = . }}{{ $external = true }}{{ end }}{{ end }}
+      <li class="inkline-feature-card">
+        <h3 class="inkline-item-title">
+          <a href="{{ $link }}"{{ if $external }} target="_blank" rel="noopener"{{ end }}>{{ .Title }}</a>
+        </h3>
         <p class="inkline-item-desc">{{ .Description }}</p>
+        {{- with .Params.tech }}
+        <p class="inkline-card-tech">{{ delimit . " · " }}</p>
+        {{- end }}
+        <p class="inkline-card-meta">
+          {{- if $external }}<span class="inkline-card-status">{{ .Params.status }}</span>{{ end }}
+          <a href="{{ .RelPermalink }}" class="inkline-card-more">Read more →</a>
+        </p>
       </li>
-      {{ end }}
+      {{- end }}
     </ul>
     <p class="inkline-section-more"><a href="/projects/">全部项目</a></p>
   </section>
 
-  <!-- 笔记 -->
+  <!-- 最新笔记 -->
   <section class="inkline-section">
-    <h2 class="inkline-section-title">笔记</h2>
+    <h2 class="inkline-section-title">最新笔记</h2>
     <ul class="inkline-article-list">
-      {{ range $notes }}
+      {{ range first 4 $notes }}
       {{- $link := .RelPermalink }}
       {{- with .Params.externalUrl }}{{ $link = . }}{{ end }}
       <li class="inkline-article-item">

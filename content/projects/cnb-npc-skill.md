@@ -2,6 +2,7 @@
 title: "cnb-npc-skill"
 date: 2026-08-19
 weight: 10
+featured: 1
 description: "零依赖 Node.js CLI：把「建仓库→推代码→@CodeBuddy→等 PR」全链路封装成一条命令，双模式——工作模式让云端 AI 写代码提 PR（实测 240 秒），只读模式做代码评审/方案分析。"
 tech: ["Node.js", "CLI", "AI Agent", "自动化", "开源"]
 status: "开源 · MIT"

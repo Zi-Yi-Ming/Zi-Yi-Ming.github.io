@@ -184,3 +184,24 @@ main {
 }
 /* 长链接 / 长串不在正文里溢出 */
 .md-content { overflow-wrap: anywhere; }
+
+/* About 量化数据行：极轻静态展示，无动画 */
+.stat-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 32px;
+  margin: 22px 0 6px;
+  padding-top: 16px;
+  border-top: 1px solid color-mix(in srgb, var(--inkline-border) 70%, transparent);
+}
+.stat-item {
+  font-size: 0.9rem;
+  color: var(--inkline-ink-2);
+  line-height: 1.6;
+}
+.stat-item strong {
+  font-family: var(--body-font-family);
+  font-weight: 600;
+  color: var(--inkline-foreground);
+  margin-right: 4px;
+}

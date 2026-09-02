@@ -18,6 +18,11 @@ paginate = 10
   # 中文字体 fallback 下会被渲染成近乎全宽字符,导致 I 和 m 间距过大
   typographer = false
 
+[markup.goldmark.renderer]
+  # 允许 content 中的原生 HTML（如 about.md 的量化数据行 stat-strip）；
+  # 内容均为本站自写 markdown，无第三方注入风险
+  unsafe = true
+
 [params]
   env = 'production'
   title = 'Zi-Yi-Ming'

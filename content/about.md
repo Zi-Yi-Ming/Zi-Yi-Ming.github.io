@@ -16,13 +16,19 @@ Hi, I'm Zi-Yi-Ming.
 
 这里是作品集，记做过的项目、踩过的坑。完整的技术文章发在 [CSDN](https://blog.csdn.net/2402_87488142)，项目清单在[项目页](/projects/)。
 
-内容不保证成体系。很多是某个问题折腾了很久之后留下的记录，先有真实过程，再谈是不是好教程。以后翻回来看，应该能想起当时是怎么一步步试过来的。
+内容不保证成体系。很多是某个问题折腾了很久之后留下的记录。比起写一篇“完美的教程”，我更希望这里能保留一些真实的过程，以后翻回来看，应该能想起当时是怎么一步步试过来的。
 
 ## 量化研究
 
 在 WorldQuant BRAIN 上写过一段时间 Alpha：一万多次回测，提交过 50+ 个因子，国内排名进过 30+。
 
 那个平台让我养成了一个习惯：一个想法不管听起来多合理，都要回测完再下结论。改参数、换思路、再回测，多循环几次，对“拍脑袋”会越来越警惕。
+
+<div class="stat-strip" aria-label="量化研究数据">
+
+<span class="stat-item"><strong>10,000+</strong> 次回测</span><span class="stat-item"><strong>50+</strong> 个 Alpha 因子</span><span class="stat-item"><strong>Top 30+</strong> 中国大陆排名</span>
+
+</div>
 
 ## 最近
 
@@ -32,9 +38,21 @@ Hi, I'm Zi-Yi-Ming.
 
 ## 技术栈
 
-主力 Java / Python，平时也会碰 Spring Boot、MySQL、Git、Linux。
+平时主力写 Java / Python，也会碰 Spring Boot、MySQL、Git、Linux。按投入程度大致分三块：
 
-关注的方向越攒越多：AI、LLM、AI Agent、AI Coding、量化、机器视觉。暂时不想给自己贴单一标签，可能过一阵子才能确定真正想长期投入的那块。
+### Core
+
+Java · Python · Git · Linux · Software Engineering
+
+### Current Focus
+
+AI Coding · LLM · AI Agent · Developer Tools · Automation
+
+### Exploring
+
+Computer Vision · OpenMV · Quantitative Research
+
+我暂时还没有特别明确地给自己贴一个标签，可能过一阵子才能确定真正想长期投入的那块。
 
 在那之前，先继续折腾。
 
