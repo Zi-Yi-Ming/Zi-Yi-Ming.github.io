@@ -8,7 +8,7 @@ hideMeta: true
 showToc: false
 ---
 
-Hi, I'm Zi-Yi-Ming.
+你好，我是 Zi-Yi-Ming。
 
 软件工程在读，喜欢写代码，也喜欢折腾新东西。兴趣换得比较快：前一阵子花了很多时间做量化研究，最近在看 OpenMV 和机器视觉，偶尔往开源项目里提点代码。
 
@@ -26,7 +26,7 @@ Hi, I'm Zi-Yi-Ming.
 
 <div class="stat-strip" aria-label="量化研究数据">
 
-<span class="stat-item"><strong>10,000+</strong> 次回测</span><span class="stat-item"><strong>50+</strong> 个 Alpha 因子</span><span class="stat-item"><strong>Top 30+</strong> 中国大陆排名</span>
+<span class="stat-item"><strong>10,000+</strong> 次回测</span><span class="stat-item"><strong>50+</strong> 个 Alpha 因子</span><span class="stat-item">中国大陆排名前 <strong>30+</strong></span>
 
 </div>
 
@@ -40,15 +40,15 @@ Hi, I'm Zi-Yi-Ming.
 
 平时主力写 Java / Python，也会碰 Spring Boot、MySQL、Git、Linux。按投入程度大致分三块：
 
-### Core
+### 基础技术
 
 Java · Python · Git · Linux · Software Engineering
 
-### Current Focus
+### 当前重点
 
 AI Coding · LLM · AI Agent · Developer Tools · Automation
 
-### Exploring
+### 探索中
 
 Computer Vision · OpenMV · Quantitative Research
 
@@ -62,7 +62,3 @@ Computer Vision · OpenMV · Quantitative Research
 - **GitHub**：[github.com/Zi-Yi-Ming](https://github.com/Zi-Yi-Ming)（开源项目，如 cnb-npc-skill）
 - **QQ**：3125727661
 - **邮箱**：[ziyim2026@gmail.com](mailto:ziyim2026@gmail.com)
-
----
-
-*先写到这里，继续折腾去了。*
