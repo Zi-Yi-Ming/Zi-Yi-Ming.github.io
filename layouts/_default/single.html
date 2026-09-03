@@ -1,0 +1,121 @@
+{{- define "main" }}
+{{- $hideMeta := .Param "hideMeta" | default false -}}
+{{- $railOn := not $hideMeta -}}
+{{- $showToc := .Param "ShowToc" -}}
+{{- $hasHeadings := gt (len (findRE "<h[2-6][ >]" .Content)) 0 -}}
+{{- $tocOn := and $showToc $hasHeadings -}}
+{{- $sec := .Section -}}
+{{- /* doc 模式：About/Toolbox 等 hideMeta 静态页 → 与列表页一致的档案页头 */ -}}
+{{- $isDoc := not $railOn -}}
+
+<main class="page {{ if $isDoc }}page--doc{{ else }}page--article{{ end }}">
+
+  {{- if $isDoc }}
+  <header class="page-head">
+    <p class="page-head__kicker">ARCHIVE / {{ now.Year }}</p>
+    <h1 class="page-head__title">{{ .Title | upper }}</h1>
+    {{- with .Description }}
+    <p class="page-head__desc">{{ . }}</p>
+    {{- end }}
+  </header>
+  {{- end }}
+  <div class="article-layout{{ if not $railOn }} article-layout--no-rail{{ end }}{{ if not $tocOn }} article-layout--no-toc{{ end }}">
+
+    {{- /* 左栏：档案元信息（桌面端 sticky；移动端隐藏） */ -}}
+    {{- if $railOn }}
+    <aside class="article-rail" aria-label="文章元信息">
+      <dl class="rail">
+        {{- with $sec }}
+        <div class="rail__row">
+          <dt>SECTION</dt>
+          <dd><a href="/{{ . }}/">{{ . | upper }}</a></dd>
+        </div>
+        {{- end }}
+        {{- if not .Date.IsZero }}
+        <div class="rail__row">
+          <dt>DATE</dt>
+          <dd><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time></dd>
+        </div>
+        {{- end }}
+        {{- if .Param "ShowReadingTime" }}
+        <div class="rail__row">
+          <dt>READ</dt>
+          <dd>{{ .ReadingTime }} MIN</dd>
+        </div>
+        {{- end }}
+        {{- if .Param "ShowWordCount" }}
+        <div class="rail__row">
+          <dt>WORDS</dt>
+          <dd>{{ .WordCount }}</dd>
+        </div>
+        {{- end }}
+        {{- $tags := .Param "tags" }}
+        {{- if $tags }}
+        <div class="rail__row rail__row--tags">
+          <dt>TAGS</dt>
+          <dd class="rail__tags">
+            {{- range .GetTerms "tags" }}
+            <a href="{{ .Permalink }}">#{{ .LinkTitle }}</a>
+            {{- end }}
+          </dd>
+        </div>
+        {{- end }}
+      </dl>
+    </aside>
+    {{- end }}
+
+    {{- /* 中栏：正文 */ -}}
+    <article class="article">
+      {{- /* 文章模式保留内层头；doc 模式标题已在 page-head，不再重复 */ -}}
+      {{- if not $isDoc }}
+      <header class="article__head">
+        {{- with $sec }}
+        <p class="article__kicker"><a href="/{{ . }}/">← {{ . | upper }}</a></p>
+        {{- end }}
+        <h1 class="article__title">{{ .Title }}</h1>
+        {{- with .Description }}
+        <p class="article__desc">{{ . }}</p>
+        {{- end }}
+      </header>
+      {{- end }}
+
+      {{- if .Content }}
+      <div class="post-content article__content">
+        {{- if not (.Param "disableAnchoredHeadings") }}
+        {{ .Content }}
+        {{- else }}{{ .Content }}{{ end }}
+      </div>
+      {{- end }}
+
+      {{- /* 上/下一篇：仅 section 内文章（About/Toolbox/Search 等无 section 页面不显示） */ -}}
+      {{- if and $sec (.Param "ShowPostNavLinks") }}
+      <nav class="article-nav" aria-label="上一篇 / 下一篇">
+        {{- with .PrevInSection }}
+        <a class="article-nav__item article-nav__item--prev" href="{{ .Permalink }}">
+          <span class="article-nav__dir">← PREV</span>
+          <span class="article-nav__title">{{ .Title }}</span>
+        </a>
+        {{- end }}
+        {{- with .NextInSection }}
+        <a class="article-nav__item article-nav__item--next" href="{{ .Permalink }}">
+          <span class="article-nav__dir">NEXT →</span>
+          <span class="article-nav__title">{{ .Title }}</span>
+        </a>
+        {{- end }}
+      </nav>
+      {{- end }}
+    </article>
+
+    {{- /* 右栏：目录（桌面端 sticky；正文确有 h2–h6 时出现） */ -}}
+    {{- if $tocOn }}
+    <aside class="article-toc" aria-label="本页目录">
+      <p class="article-toc__label">ON THIS PAGE</p>
+      <div class="article-toc__inner">
+        {{ .TableOfContents }}
+      </div>
+    </aside>
+    {{- end }}
+
+  </div>
+</main>
+{{- end }}

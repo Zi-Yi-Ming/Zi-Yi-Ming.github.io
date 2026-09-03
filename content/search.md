@@ -1,6 +1,6 @@
 ---
-title: "搜索"
+title: "Search"
 layout: "search"
-summary: "搜索博客文章"
+summary: "搜索本站项目与笔记"
 placeholder: "输入关键词搜索文章…"
 ---

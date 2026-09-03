@@ -1,11 +1,12 @@
+{{- /* 通用列表模板：作为自定义 sections（projects/notes）之外的兜底，视觉与其它档案列表统一 */ -}}
 {{- define "main" }}
-{{- $pages := union .RegularPages .Sections -}}
+{{- $pages := .RegularPages -}}
 {{- $paginator := .Paginate $pages 10 -}}
 
 <main class="page">
   <header class="page-head">
     <p class="page-head__kicker">ARCHIVE / {{ now.Year }}</p>
-    <h1 class="page-head__title">NOTES</h1>
+    <h1 class="page-head__title">{{ .Title | upper }}</h1>
     {{- with .Description }}
     <p class="page-head__desc">{{ . }}</p>
     {{- end }}
@@ -15,21 +16,14 @@
   <div class="page-intro post-content">{{ .Content }}</div>
   {{- end }}
 
-  <section class="list-block" aria-label="全部笔记">
-    <h2 class="list-block__label">ALL NOTES</h2>
+  <section class="list-block" aria-label="列表">
     <ol class="entry-list">
       {{- range $index, $page := $paginator.Pages }}
-      {{- $link := $page.RelPermalink }}
-      {{- $external := false }}
-      {{- with $page.Params.externalUrl }}{{ $link = . }}{{ $external = true }}{{ end }}
       <li class="entry-row">
         <span class="entry-row__no">{{ printf "%02d" (add $index 1) }}</span>
         <div class="entry-row__body">
-          <a class="entry-row__title" href="{{ $link }}"{{ if $external }} target="_blank" rel="noopener"{{ end }}>{{ $page.Title }}</a>
+          <a class="entry-row__title" href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
           <p class="entry-row__desc">{{ $page.Description | default ($page.Summary | plainify | truncate 90) }}</p>
-          {{- with $page.Params.tags }}
-          <p class="entry-row__tech">{{ range . }}<span>#{{ . }}</span> {{ end }}</p>
-          {{- end }}
         </div>
         <time class="entry-row__date" datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "2006.01.02" }}</time>
       </li>

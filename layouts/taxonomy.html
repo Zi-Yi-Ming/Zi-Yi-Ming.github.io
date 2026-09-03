@@ -1,0 +1,20 @@
+{{- define "main" }}
+{{- /* 覆盖主题 taxonomy.html：/tags/ 与 /categories/ 索引云，统一档案视觉 */ -}}
+{{- $terms := .Data.Terms.Alphabetical -}}
+
+<main class="page">
+  <header class="page-head">
+    <p class="page-head__kicker">ARCHIVE / INDEX</p>
+    <h1 class="page-head__title">{{ .Title | default "INDEX" }}</h1>
+    {{- with .Description }}
+    <p class="page-head__desc">{{ . }}</p>
+    {{- end }}
+  </header>
+
+  <section class="chip-cloud" aria-label="{{ .Title }} 列表">
+    {{- range $terms }}
+    <a class="chip" href="{{ .Page.RelPermalink }}">{{ .Name }}<sup>{{ .Count }}</sup></a>
+    {{- end }}
+  </section>
+</main>
+{{- end }}

@@ -1,74 +1,88 @@
 {{- define "main" }}
-{{- $projects := where (where .Site.RegularPages "Params.draft" "!=" true) "Section" "eq" "projects" }}
-{{- $featured := where $projects "Params.featured" "ne" nil }}
-{{- $others := where $projects "Params.featured" "eq" nil }}
+{{- $projects := where (where .Site.RegularPages "Params.draft" "!=" true) "Section" "eq" "projects" -}}
+{{- $featured := sort (where $projects "Params.featured" "ne" nil) "Params.featured" "asc" -}}
+{{- $others := sort (where $projects "Params.featured" "eq" nil) "Weight" "asc" -}}
 
-<header class="page-header">
-  {{- partial "breadcrumbs.html" . }}
-  <h1>{{ .Title }}</h1>
-  {{- with .Description }}
-  <div class="post-description">{{ . | markdownify }}</div>
+<main class="page">
+  <header class="page-head">
+    <p class="page-head__kicker">ARCHIVE / {{ now.Year }}</p>
+    <h1 class="page-head__title">PROJECTS</h1>
+    {{- with .Description }}
+    <p class="page-head__desc">{{ . }}</p>
+    {{- end }}
+  </header>
+
+  {{- if .Content }}
+  <div class="page-intro post-content">{{ .Content }}</div>
   {{- end }}
-</header>
 
-{{- with .Content }}
-<div class="post-content md-content">
-  {{ partial "anchored_headings.html" . }}
-</div>
+  {{- /* 编号模板：featured 段 → others 段，编号连续 */ -}}
+  {{- $num := 0 }}
+
+  {{- if $featured }}
+  <section class="list-block" aria-label="精选项目">
+    <h2 class="list-block__label">FEATURED</h2>
+    <ol class="entry-list">
+      {{- range $index, $project := $featured }}
+      {{- $num = add $index 1 }}
+      {{- $link := $project.RelPermalink }}
+      {{- $external := false }}
+      {{- with $project.Params.csdn }}{{ $link = . }}{{ $external = true }}{{ else }}
+      {{- with $project.Params.github }}{{ $link = . }}{{ $external = true }}{{ end }}{{ end }}
+      <li class="entry-row">
+        <span class="entry-row__no">{{ printf "%02d" $num }}</span>
+        <div class="entry-row__body">
+          <a class="entry-row__title" href="{{ $link }}"{{ if $external }} target="_blank" rel="noopener"{{ end }}>{{ $project.Title }}</a>
+          <p class="entry-row__desc">{{ $project.Description }}</p>
+          {{- with $project.Params.tech }}
+          <p class="entry-row__tech">{{ delimit . " · " }}</p>
+          {{- end }}
+          {{- if or $project.Params.status $project.Params.github $project.Params.notes }}
+          <p class="entry-row__links">
+            {{- with $project.Params.status }}<span class="entry-row__status">{{ . }}</span>{{ end }}
+            {{- if $project.Params.github }}<a href="{{ $project.Params.github }}" target="_blank" rel="noopener">GitHub ↗</a>{{ end }}
+            {{- range $project.Params.notes }}<a href="{{ . }}" target="_blank" rel="noopener">笔记 ↗</a>{{ end }}
+          </p>
+          {{- end }}
+        </div>
+        <time class="entry-row__date" datetime="{{ $project.Date.Format "2006-01-02" }}">{{ $project.Date.Format "2006" }}</time>
+      </li>
+      {{- end }}
+    </ol>
+  </section>
+  {{- end }}
+
+  {{- if $others }}
+  <section class="list-block" aria-label="更多项目">
+    <h2 class="list-block__label">MORE PROJECTS</h2>
+    <ol class="entry-list" start="{{ add (len $featured) 1 }}">
+      {{- range $index, $project := $others }}
+      {{- $num = add $num 1 }}
+      {{- $link := $project.RelPermalink }}
+      {{- $external := false }}
+      {{- with $project.Params.csdn }}{{ $link = . }}{{ $external = true }}{{ else }}
+      {{- with $project.Params.github }}{{ $link = . }}{{ $external = true }}{{ end }}{{ end }}
+      <li class="entry-row">
+        <span class="entry-row__no">{{ printf "%02d" $num }}</span>
+        <div class="entry-row__body">
+          <a class="entry-row__title" href="{{ $link }}"{{ if $external }} target="_blank" rel="noopener"{{ end }}>{{ $project.Title }}</a>
+          <p class="entry-row__desc">{{ $project.Description }}</p>
+          {{- with $project.Params.tech }}
+          <p class="entry-row__tech">{{ delimit . " · " }}</p>
+          {{- end }}
+          {{- if or $project.Params.status $project.Params.github $project.Params.notes }}
+          <p class="entry-row__links">
+            {{- with $project.Params.status }}<span class="entry-row__status">{{ . }}</span>{{ end }}
+            {{- if $project.Params.github }}<a href="{{ $project.Params.github }}" target="_blank" rel="noopener">GitHub ↗</a>{{ end }}
+            {{- range $project.Params.notes }}<a href="{{ . }}" target="_blank" rel="noopener">笔记 ↗</a>{{ end }}
+          </p>
+          {{- end }}
+        </div>
+        <time class="entry-row__date" datetime="{{ $project.Date.Format "2006-01-02" }}">{{ $project.Date.Format "2006" }}</time>
+      </li>
+      {{- end }}
+    </ol>
+  </section>
+  {{- end }}
+</main>
 {{- end }}
-
-<!-- Featured -->
-<section class="proj-section">
-  <h2 class="proj-group-title">Featured 重点项目</h2>
-  <ul class="proj-grid">
-    {{- range sort $featured "Params.featured" "asc" }}
-    {{- $link := .RelPermalink }}
-    {{- $external := false }}
-    {{- with .Params.csdn }}{{ $link = . }}{{ $external = true }}{{ else }}{{ with .Params.github }}{{ $link = . }}{{ $external = true }}{{ end }}{{ end }}
-    <li class="proj-card">
-      <h3 class="inkline-item-title"><a href="{{ $link }}"{{ if $external }} target="_blank" rel="noopener"{{ end }}>{{ .Title }}</a></h3>
-      <p class="inkline-item-desc">{{ .Description }}</p>
-      {{- with .Params.tech }}
-      <p class="inkline-card-tech">{{ delimit . " · " }}</p>
-      {{- end }}
-      {{- if or .Params.status .Params.github .Params.notes }}
-      <p class="proj-links">
-        {{- with .Params.status }}<span class="proj-status">{{ . }}</span>{{ end }}
-        {{- if .Params.github }}<a href="{{ .Params.github }}" target="_blank" rel="noopener">GitHub ↗</a>{{ end }}
-        {{- range .Params.notes }}<a href="{{ . }}">笔记</a>{{ end }}
-      </p>
-      {{- end }}
-    </li>
-    {{- end }}
-  </ul>
-</section>
-
-<!-- Others -->
-{{- with $others }}
-<section class="proj-section">
-  <h2 class="proj-group-title">其他项目</h2>
-  <ul class="proj-grid">
-    {{- range sort . "Weight" "asc" }}
-    {{- $link := .RelPermalink }}
-    {{- $external := false }}
-    {{- with .Params.csdn }}{{ $link = . }}{{ $external = true }}{{ else }}{{ with .Params.github }}{{ $link = . }}{{ $external = true }}{{ end }}{{ end }}
-    <li class="proj-card">
-      <h3 class="inkline-item-title"><a href="{{ $link }}"{{ if $external }} target="_blank" rel="noopener"{{ end }}>{{ .Title }}</a></h3>
-      <p class="inkline-item-desc">{{ .Description }}</p>
-      {{- with .Params.tech }}
-      <p class="inkline-card-tech">{{ delimit . " · " }}</p>
-      {{- end }}
-      {{- if or .Params.status .Params.github .Params.notes }}
-      <p class="proj-links">
-        {{- with .Params.status }}<span class="proj-status">{{ . }}</span>{{ end }}
-        {{- if .Params.github }}<a href="{{ .Params.github }}" target="_blank" rel="noopener">GitHub ↗</a>{{ end }}
-        {{- range .Params.notes }}<a href="{{ . }}">笔记</a>{{ end }}
-      </p>
-      {{- end }}
-    </li>
-    {{- end }}
-  </ul>
-</section>
-{{- end }}
-
-{{- end }}{{- /* end main */ -}}

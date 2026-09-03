@@ -1,5 +1,5 @@
 ---
-title: "关于我"
+title: "About"
 description: "关于这个博客和作者"
 ShowReadingTime: false
 ShowWordCount: false

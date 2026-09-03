@@ -23,13 +23,20 @@ paginate = 10
   # 内容均为本站自写 markdown，无第三方注入风险
   unsafe = true
 
+# TOC 收录 h2–h4（笔记长文习惯用三级标题）
+[markup.tableOfContents]
+  startLevel = 2
+  endLevel = 4
+
 [params]
   env = 'production'
   title = 'Zi-Yi-Ming'
   description = 'Zi-Yi-Ming 的个人作品集：开源工具、量化研究、云服务与机器视觉'
   author = 'Zi-Yi-Ming'
   DateFormat = '2006-01-02'
-  defaultTheme = 'auto'
+  defaultTheme = 'dark'
+  # Light 模式暂缓：先隐藏主题切换（PaperMod head/footer 脚本按此开关生效）
+  disableThemeToggle = true
   ShowReadingTime = true
   ShowWordCount = true
   ShowShareButtons = false
@@ -50,32 +57,27 @@ paginate = 10
     url = 'https://github.com/Zi-Yi-Ming'
 
   [[menu.main]]
-    identifier = 'home'
-    name = '首页'
-    url = '/'
+    identifier = 'projects'
+    name = 'Projects'
+    url = '/projects/'
     weight = 1
   [[menu.main]]
-    identifier = 'projects'
-    name = '项目'
-    url = '/projects/'
+    identifier = 'notes'
+    name = 'Notes'
+    url = '/notes/'
     weight = 2
   [[menu.main]]
     identifier = 'about'
-    name = '关于'
+    name = 'About'
     url = '/about/'
     weight = 3
   [[menu.main]]
     identifier = 'toolbox'
-    name = '自用清单'
+    name = 'Toolbox'
     url = '/toolbox/'
     weight = 4
   [[menu.main]]
-    identifier = 'notes'
-    name = '笔记'
-    url = '/notes/'
-    weight = 5
-  [[menu.main]]
     identifier = 'search'
-    name = '搜索'
+    name = 'Search'
     url = '/search/'
-    weight = 6
+    weight = 5

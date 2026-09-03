@@ -1,5 +1,5 @@
 ---
-title: "自用清单"
+title: "Toolbox"
 description: "自己用着顺手的工具、插件与资源推荐，持续更新"
 ShowReadingTime: false
 ShowWordCount: false
@@ -13,11 +13,7 @@ hideMeta: true
 
 ### [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
 
-Python 环境管理用。推荐 Miniconda 而不是 Anaconda，启动快、体积小，按项目隔离环境就一条命令：
-
-```bash
-conda create -n xxx python=3.x
-```
+Python 环境管理用。推荐 Miniconda 而不是 Anaconda——启动快、体积小，按项目用一条命令就能建出隔离环境。
 
 ## VS Code 插件
 

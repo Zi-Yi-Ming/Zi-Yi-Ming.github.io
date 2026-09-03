@@ -1,60 +1,102 @@
 {{- define "main" }}
-{{- $projects := where (where .Site.RegularPages "Params.draft" "!=" true) "Section" "eq" "projects" }}
-{{- $featured := where $projects "Params.featured" "ne" nil }}
-{{- $notes := where (where .Site.RegularPages "Params.draft" "!=" true) "Section" "eq" "notes" }}
-<main>
-  <!-- Hero -->
-  <section class="inkline-hero">
-    <h1>你好，我是 Zi-Yi-Ming。</h1>
-    <p>软件工程学生，写代码、做项目、折腾新东西。这里是作品集——<a href="https://blog.csdn.net/2402_87488142">CSDN</a> 放技术文章，这里放我做过的东西。</p>
-  </section>
+{{- /* ---------- 数据查询 ---------- */ -}}
+{{- $projects := where (where .Site.RegularPages "Params.draft" "!=" true) "Section" "eq" "projects" -}}
+{{- $featured := sort (where $projects "Params.featured" "ne" nil) "Params.featured" "asc" -}}
+{{- $notes := where (where .Site.RegularPages "Params.draft" "!=" true) "Section" "eq" "notes" -}}
+{{- $recentNotes := first 5 (sort $notes "Date" "desc") -}}
+{{- $noteStart := add (len $featured) 1 -}}
 
-  <!-- Currently：修改这里更新首页动态 -->
-  <section class="inkline-currently">
-    <p class="inkline-currently-label">Currently</p>
-    <p class="inkline-now">在维护 vLLM Semantic Router（PR #3294 已合入主仓库，也是它 DE 组成员），在学 OpenMV 和机器视觉，平时用 Java / Python 写东西。</p>
-  </section>
+{{- /* 头像：走 Hugo 资产管线压缩为 webp（像素画在此尺寸下体积很小） */ -}}
+{{- $av := resources.Get "img/avatar.png" -}}
+{{- if $av }}{{ $av = $av.Resize "512x webp q88" }}{{ end -}}
 
-  <!-- Featured Projects -->
-  <section class="inkline-section">
-    <h2 class="inkline-section-title">Featured Projects</h2>
-    <ul class="inkline-feature-grid">
-      {{- range sort $featured "Params.featured" "asc" }}
-      {{- $link := .RelPermalink }}
-      {{- $external := false }}
-      {{- with .Params.csdn }}{{ $link = . }}{{ $external = true }}{{ else }}{{ with .Params.github }}{{ $link = . }}{{ $external = true }}{{ end }}{{ end }}
-      <li class="inkline-feature-card">
-        <h3 class="inkline-item-title">
-          <a href="{{ $link }}"{{ if $external }} target="_blank" rel="noopener"{{ end }}>{{ .Title }}</a>
-        </h3>
-        <p class="inkline-item-desc">{{ .Description }}</p>
-        {{- with .Params.tech }}
-        <p class="inkline-card-tech">{{ delimit . " · " }}</p>
-        {{- end }}
-        <p class="inkline-card-meta">
-          {{- if $external }}<span class="inkline-card-status">{{ .Params.status }}</span>{{ end }}
-          <a href="{{ .RelPermalink }}" class="inkline-card-more">Read more →</a>
-        </p>
-      </li>
+<main class="page page--home">
+
+  {{- /* ---------- Hero / 身份区 ---------- */ -}}
+  <section class="hero" aria-label="身份简介">
+    <div class="hero__main">
+      <p class="hero__eyebrow">NIGHT ARCHIVE / 01</p>
+      <h1 class="hero__name">ZI-YI-MING</h1>
+      <p class="hero__role">SOFTWARE ENGINEERING</p>
+      <p class="hero__focus">DEVELOPER TOOLS / AI AUTOMATION</p>
+    </div>
+    <div class="hero__aside">
+      {{- if $av }}
+      <img class="hero__avatar" src="{{ $av.RelPermalink }}" alt="Zi-Yi-Ming 的像素头像" width="{{ $av.Width }}" height="{{ $av.Height }}">
       {{- end }}
-    </ul>
-    <p class="inkline-section-more"><a href="/projects/">全部项目</a></p>
+      <p class="hero__status">BUILDING THINGS.<br>DOCUMENTING WHAT BREAKS.</p>
+    </div>
   </section>
 
-  <!-- 最新笔记 -->
-  <section class="inkline-section">
-    <h2 class="inkline-section-title">最新笔记</h2>
-    <ul class="inkline-article-list">
-      {{ range first 4 $notes }}
-      {{- $link := .RelPermalink }}
-      {{- with .Params.externalUrl }}{{ $link = . }}{{ end }}
-      <li class="inkline-article-item">
-        <h3 class="inkline-item-title"><a href="{{ $link }}"{{ with .Params.externalUrl }} target="_blank" rel="noopener"{{ end }}>{{ .Title }}</a></h3>
-        <p class="inkline-item-desc">{{ .Description | default (.Summary | plainify | truncate 90) }}</p>
-      </li>
-      {{ end }}
-    </ul>
-    <p class="inkline-section-more"><a href="/notes/">更多笔记</a></p>
+  <div class="page__rule" aria-hidden="true"></div>
+
+  {{- /* ---------- 档案索引区 ---------- */ -}}
+  <section class="archive" id="archive" aria-label="档案索引">
+    <header class="archive__head">
+      <h2 class="archive__title">ARCHIVE / {{ now.Year }}</h2>
+      <span class="archive__count">{{ len $projects }} PROJECTS · {{ len $notes }} NOTES</span>
+    </header>
+
+    <div class="archive__grid">
+      {{- /* 左栏：精选项目 */ -}}
+      <div class="archive__col">
+        <h3 class="archive__col-label">SELECTED WORKS</h3>
+        <ol class="entry-list">
+          {{- range $index, $project := $featured }}
+          {{- $link := $project.RelPermalink }}
+          {{- $external := false }}
+          {{- with $project.Params.csdn }}{{ $link = . }}{{ $external = true }}{{ else }}
+          {{- with $project.Params.github }}{{ $link = . }}{{ $external = true }}{{ end }}{{ end }}
+          <li class="entry-row">
+            <span class="entry-row__no">{{ printf "%02d" (add $index 1) }}</span>
+            <div class="entry-row__body">
+              <a class="entry-row__title" href="{{ $link }}"{{ if $external }} target="_blank" rel="noopener"{{ end }}>{{ $project.Title }}</a>
+              <p class="entry-row__desc">{{ $project.Description }}</p>
+              {{- with $project.Params.tech }}
+              <p class="entry-row__tech">{{ delimit . " · " }}</p>
+              {{- end }}
+            </div>
+            <time class="entry-row__date" datetime="{{ $project.Date.Format "2006-01-02" }}">{{ $project.Date.Format "2006" }}</time>
+          </li>
+          {{- end }}
+        </ol>
+        <a class="entry-more" href="/projects/">VIEW ALL PROJECTS →</a>
+      </div>
+
+      {{- /* 右栏：最近笔记 */ -}}
+      <div class="archive__col">
+        <h3 class="archive__col-label">RECENT NOTES</h3>
+        <ol class="entry-list" start="{{ $noteStart }}">
+          {{- range $index, $note := $recentNotes }}
+          {{- $link := $note.RelPermalink }}
+          {{- $external := false }}
+          {{- with $note.Params.externalUrl }}{{ $link = . }}{{ $external = true }}{{ end }}
+          <li class="entry-row">
+            <span class="entry-row__no">{{ printf "%02d" (add $noteStart $index) }}</span>
+            <div class="entry-row__body">
+              <a class="entry-row__title" href="{{ $link }}"{{ if $external }} target="_blank" rel="noopener"{{ end }}>{{ $note.Title }}</a>
+              <p class="entry-row__desc">{{ $note.Description | default ($note.Summary | plainify | truncate 80) }}</p>
+            </div>
+            <time class="entry-row__date" datetime="{{ $note.Date.Format "2006-01-02" }}">{{ $note.Date.Format "01.02" }}</time>
+          </li>
+          {{- end }}
+        </ol>
+        <a class="entry-more" href="/notes/">VIEW ALL NOTES →</a>
+      </div>
+    </div>
   </section>
+
+  {{- /* ---------- About 摘要 ---------- */ -}}
+  <section class="about-strip" aria-label="关于">
+    <h3 class="about-strip__label">ABOUT</h3>
+    <div class="about-strip__body">
+      <p class="about-strip__text">
+        软件工程在读。喜欢写代码，也喜欢折腾新东西——量化、机器视觉、AI 与开发者工具，偶尔往开源项目里提点代码。
+      </p>
+      <p class="about-strip__meta">Open source · Quant research · CV &amp; AI tools</p>
+    </div>
+    <a class="about-strip__link" href="/about/">VIEW PROFILE →</a>
+  </section>
+
 </main>
 {{- end }}

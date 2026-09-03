@@ -13,19 +13,25 @@
 {{- end }}
 
 <head>
+    {{- /* 首帧前标记 js：入场动画的隐藏态从第一次绘制即生效，避免大字"先亮后藏"闪一下 */ -}}
+    <script>document.documentElement.classList.add("js");</script>
+    {{- /* 预载展示字体：减少 Manrope 加载完成后的字形跳动 */ -}}
+    <link rel="preload" href="{{ "fonts/manrope-latin.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
     {{- partial "head.html" . }}
+    {{- /* 主题 head 已自动打包 assets/css/extended/*.css（含本站设计系统），无需额外 link */ -}}
 </head>
 
 {{- if (or (ne .Kind `page` ) (eq .Layout `archives`) (eq .Layout `search`)) }}
-<body class="list" id="top">
+<body class="list site-body" id="top">
 {{- else }}
-<body id="top">
+<body class="site-body" id="top">
 {{- end }}
-    {{ partialCached "header.html" . .Page -}}
+    {{- partial "bg.html" . }}
+    {{- partial "header.html" . }}
     <main class="main">
         {{- block "main" . }}{{ end }}
     </main>
-    {{ partialCached "footer.html" . .Layout .Kind (.Param "hideFooter") (.Param "ShowCodeCopyButtons") -}}
+    {{- partial "footer.html" . }}
 </body>
 
 </html>

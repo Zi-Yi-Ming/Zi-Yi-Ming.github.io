@@ -1,0 +1,16 @@
+{{- /* ============================================================
+    全站背景层（Plan C · Spatial Archive / 夜晚档案空间）
+    层级自下而上：photo → mist → moon → stars → vignette → grain
+    与 night_archive_motion_demo.html 的结构一一对应；
+    position:fixed 挂在 body 下，内容层在 z-index 之上正常滚动。
+    Light（白天）模式暂缓：后续补 token 时只需在 CSS 中切换这些层。
+============================================================ */ -}}
+<div class="site-bg" aria-hidden="true">
+  <img class="site-bg__photo" src="{{ "bg/night-city.png" | relURL }}" alt="" decoding="async" draggable="false">
+  <div class="site-bg__mist"></div>
+  <div class="site-bg__moon"></div>
+  <div class="site-bg__stars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="site-bg__scrim"></div>
+  <div class="site-bg__vignette"></div>
+  <div class="site-bg__grain"></div>
+</div>

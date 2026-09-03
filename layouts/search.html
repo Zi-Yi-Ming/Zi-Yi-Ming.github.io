@@ -1,0 +1,20 @@
+{{- define "main" }}
+{{- /* 覆盖主题 search.html：档案式页头；保留 fastsearch 所需的 id/class 约定 */ -}}
+<main class="page">
+  <header class="page-head">
+    <p class="page-head__kicker">ARCHIVE / FIND</p>
+    <h1 class="page-head__title">SEARCH</h1>
+    {{- with .Description }}
+    <p class="page-head__desc">{{ . }}</p>
+    {{- else }}
+    <p class="page-head__desc">在项目与笔记里搜关键词（标题 / 标签 / 正文）</p>
+    {{- end }}
+  </header>
+
+  <div id="searchbox" class="searchbox">
+    <input id="searchInput" disabled placeholder="{{ .Params.placeholder | default "输入关键词 ↵" }}"
+      aria-label="search" type="search" autocomplete="off" maxlength="64">
+    <ul id="searchResults" class="searchResults" aria-label="search results"></ul>
+  </div>
+</main>
+{{- end }}
