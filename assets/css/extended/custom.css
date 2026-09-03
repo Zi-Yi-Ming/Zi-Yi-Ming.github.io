@@ -1572,4 +1572,226 @@ html.js .anim.is-in {
 }
 .error-nav a:hover { color: var(--accent-strong); border-color: var(--accent); }
 
+/* ============================================================
+   18. ABOUT / TOOLBOX — Archive Documents
+   doc 静态页（About/Toolbox）档案化视觉：编号 section、细分隔线、
+   editorial 列表。全部限定 .page--doc，不影响首页/列表/普通文章。
+   ============================================================ */
+
+/* --- 尺度：About 去悬浮 TOC 预留边距，正文限宽；desc 620 --- */
+.page--doc .article-layout--no-rail.article-layout--no-toc .article { padding-right: 0; }
+.page--doc .article-layout--no-rail.article-layout--no-toc .article__content { max-width: 820px; }
+.page--doc .page-head__desc { max-width: 620px; }
+
+/* --- Archive Section：h2 → 01/02/03… + 顶部分隔线 --- */
+.page--doc .post-content { counter-reset: docsec; }
+.page--doc .post-content h2 {
+  counter-increment: docsec;
+  margin: clamp(3.4em, 9vh, 6.5em) 0 0;
+  padding: 0 0 16px;
+  border-bottom: 1px solid var(--line);
+  font-size: clamp(1.2em, 1.7vw, 1.42em);
+}
+.page--doc .post-content h2:first-of-type { margin-top: clamp(1.8em, 5vh, 3.6em); }
+.page--doc .post-content h2::before {
+  content: counter(docsec, decimal-leading-zero);
+  display: block;
+  margin-bottom: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.62em;
+  font-weight: 500;
+  letter-spacing: 0.34em;
+  color: var(--accent);
+}
+
+/* --- About：量化统计条 → 三列数据块（细分隔线、无卡片阴影） --- */
+.page--doc .post-content .stat-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin: 3em 0 0.2em;
+  padding: 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  line-height: 1.4;
+  max-width: none;
+}
+.page--doc .post-content .stat-strip > span {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px 22px 24px 0;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.page--doc .post-content .stat-strip > span + span {
+  padding-left: 22px;
+  border-left: 1px solid var(--line-soft);
+}
+.page--doc .post-content .stat-strip > span::before { content: none; }
+.page--doc .post-content .stat-strip strong {
+  order: -1; /* 数字统一置顶：兼容第 3 项“标签在数字前”的 DOM 顺序 */
+  margin: 0;
+  font-size: clamp(24px, 3vw, 30px);
+  color: var(--accent-strong);
+}
+
+/* --- Toolbox：工具条目 → editorial 列表（h3 细线分隔，非卡片） --- */
+.page--doc .post-content h3 {
+  margin: 2.6em 0 0.55em;
+  padding-top: 20px;
+  font-family: var(--font-mono);
+  font-size: 0.98rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+/* 首条工具紧贴 section 编号头，不加线；其余条目用细线分隔 */
+.page--doc .post-content h3:not(:first-of-type) {
+  border-top: 1px solid var(--line-soft);
+}
+
+/* cnb-npc-skill（自研）：小型 mono 标识，非 pill badge */
+.page--doc .post-content h3:last-of-type::after {
+  content: " / SELF-BUILT";
+  font-size: 0.6em;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--accent-strong);
+  margin-left: 0.6em;
+}
+
+/* --- Toolbox：技术档案表格（mono 表头、细线行、首列宽、轻 hover） --- */
+.page--doc .post-content table {
+  margin-top: 1.6em;
+  min-width: 560px; /* 移动端在容器内横向滚动，不挤压换行 */
+}
+.page--doc .post-content th,
+.page--doc .post-content td {
+  border: none;
+  border-bottom: 1px solid var(--line-soft);
+}
+.page--doc .post-content th {
+  border-bottom-color: var(--line);
+  font-weight: 600;
+  color: var(--ink-3);
+  letter-spacing: 0.1em;
+}
+.page--doc .post-content th:first-child,
+.page--doc .post-content td:first-child {
+  width: 34%;
+  white-space: nowrap;
+}
+.page--doc .post-content td:first-child {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--ink);
+}
+.page--doc .post-content tbody tr:hover td {
+  background: rgba(179, 154, 240, 0.04);
+}
+
+/* --- 移动端：统计条自然折叠、整体节奏收窄 --- */
+@media (max-width: 680px) {
+  .page--doc .post-content .stat-strip { grid-template-columns: 1fr; }
+  .page--doc .post-content .stat-strip > span,
+  .page--doc .post-content .stat-strip > span + span {
+    padding: 18px 0;
+    border-left: none;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .page--doc .post-content .stat-strip > span:last-child { border-bottom: none; }
+  .page--doc .post-content h2::before { letter-spacing: 0.26em; }
+  .page--doc .post-content h3 { font-size: 0.92rem; }
+}
+
+/* ============================================================
+   18.1 About 联系方式 — contact index（Icon + 名称 + 账号）
+   仅 .page--doc 内生效；无卡片/圆角/阴影，细线体现 Archive 索引感
+   ============================================================ */
+
+.page--doc .post-content .contact-index {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 2.4em;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+}
+
+.contact-index__item {
+  display: grid;
+  grid-template-columns: 16px minmax(0, 1fr);
+  gap: 9px;
+  padding: 0 18px 6px 0;
+  min-width: 0;
+}
+.contact-index__item + .contact-index__item {
+  padding-left: 18px;
+  border-left: 1px solid var(--line-soft);
+}
+
+/* 覆盖 .post-content a 的默认紫色下划线链接样式（这里是索引项，不是行内链接） */
+.page--doc .post-content a.contact-index__item {
+  color: var(--ink-1);
+  border-bottom: none;
+  padding-bottom: 6px;
+}
+.page--doc .post-content .contact-index__item::after { content: none; }
+
+.contact-index__item--plain { cursor: default; }
+
+.contact-index__icon {
+  color: var(--accent);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.contact-index__icon svg { display: block; width: 100%; height: 100%; }
+
+.contact-index__body { min-width: 0; }
+.contact-index__label {
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  transition: color 0.2s ease;
+}
+.contact-index__value {
+  display: block;
+  font-size: 13.5px;
+  color: var(--ink-1);
+  overflow-wrap: anywhere; /* 邮箱长地址正常换行，不撑破容器 */
+}
+
+/* hover：仅轻微 accent/位移，无大动画 */
+.contact-index__item[href]:hover .contact-index__icon {
+  color: var(--accent-strong);
+  transform: translateY(-1px);
+}
+.contact-index__item[href]:hover .contact-index__label { color: var(--accent-strong); }
+.contact-index__item[href]:hover .contact-index__value { color: var(--ink); }
+
+/* 移动端：4 列 → 2 列 → 1 列，去掉竖分隔线防错位 */
+@media (max-width: 820px) {
+  .page--doc .post-content .contact-index { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .contact-index__item,
+  .contact-index__item + .contact-index__item {
+    padding-left: 0;
+    padding-right: 16px;
+    padding-bottom: 16px;
+    border-left: none;
+  }
+}
+@media (max-width: 460px) {
+  .page--doc .post-content .contact-index { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .contact-index__item,
+  .contact-index__item + .contact-index__item { padding-bottom: 14px; }
+}
+
 /* （文件结尾） */
