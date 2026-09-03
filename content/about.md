@@ -34,7 +34,7 @@ showToc: false
 
 量化先放一放，在学 OpenMV：摄像头、图像处理、MicroPython、传感器。代码能真正“看到”东西、控制现实世界，和纯写软件是两种感觉。
 
-开源这边，给 vLLM Semantic Router 修过安装脚本（它只认 Docker、不认已装好的 Podman），PR #3294 已经合入主仓库，正在申请它 Developer Experience & Ecosystem 组的成员。详情在[项目页](/projects/vllm-semantic-router-contribution/)。
+开源这边，是 [vLLM Semantic Router](https://community.vllm-sr.ai/)（5k★ 开源项目）的贡献者，PR #3294 已合入上游，现在是它 Developer Experience & Ecosystem 组的成员。详情在[项目页](/projects/vllm-semantic-router-contribution/)。
 
 ## 技术栈
 
