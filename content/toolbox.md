@@ -1,67 +1,65 @@
 ---
 title: "Toolbox"
-description: "自己用着顺手的工具、插件与资源推荐，持续更新"
+description: "记录我在开发、研究与写作中实际使用的工具"
 ShowReadingTime: false
 ShowWordCount: false
 hideAuthor: true
 hideMeta: true
 ---
 
-这里只列我实际用过、觉得值得留档的工具和插件，会持续更新；常规必备的就不占篇幅了。自己写的会标（自研），和纯推荐区分开。
+记录我在开发、研究与写作中实际使用的工具与插件，随工作环境的变化持续更新。常规必备的就不占篇幅了；自己写的会标（自研）。
 
 ## 开发环境
 
 ### [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
 
-Python 环境管理用。推荐 Miniconda 而不是 Anaconda——启动快、体积小，按项目用一条命令就能建出隔离环境。
+Python 环境管理。主要用于不同项目和实验之间的环境隔离。
 
 ## VS Code 插件
 
-| 插件 | 用途 |
-| --- | --- |
-| [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) | 文档与代码规范、格式化 |
-| [Rainbow CSV](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv) | CSV 文件按列着色，数据文件一目了然 |
-| [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) | 一键进入 Docker 容器开发环境 |
-| [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) | 看代码 blame、提交历史、分支关系 |
-| [Jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter) | 直接在 VS Code 里跑 .ipynb，配合数据分析与量化研究 |
+| 工具 | 用途 | 保留原因 |
+| --- | --- | --- |
+| [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) | 文档与代码规范、格式化 | 写 Markdown 和代码时保持一致的格式标准 |
+| [Rainbow CSV](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv) | CSV 按列着色 | 看回测数据等表格文件时结构一目了然 |
+| [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) | 容器化开发环境 | 需要复现项目环境时比手动配置更可靠 |
+| [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) | Git 历史、blame、分支关系 | 查看代码演进时比命令行更直观 |
+| [Jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter) | Notebook 与数据分析 | 量化研究和数据实验时直接使用 |
 
 ## 笔记软件
 
 ### [Obsidian](https://obsidian.md/)
 
-本地 Markdown 笔记库。搭配 `obsidian-git` 用 GitHub 仓库同步，相当于免费的 Obsidian Sync，数据全在自己手里。
+本地 Markdown 知识库，用 Git 做版本管理。笔记全部落在自己手里，不依赖某个云端服务的锁定。
 
-必装插件：
-
-| 插件 | 用途 |
-| --- | --- |
-| obsidian-git | 用 GitHub 仓库做笔记同步与版本管理 |
-| obsidian-enhancing-export | 增强导出，笔记一键转 PDF / HTML |
-| obsidian-custom-attachment-location | 自定义附件存放位置，保持笔记库整洁 |
+| 插件 | 用途 | 保留原因 |
+| --- | --- | --- |
+| obsidian-git | 用 GitHub 仓库同步笔记与版本管理 | 笔记的每次改动都有迹可循 |
+| obsidian-enhancing-export | 导出 PDF / HTML | 需要分享或归档时一键转出 |
+| obsidian-custom-attachment-location | 自定义附件存放位置 | 保持笔记库结构整齐 |
 
 ## 效率工具
 
 ### [Everything](https://www.voidtools.com/zh-cn/)
 
-Windows 上按文件名搜文件，基本秒出，比资源管理器自带的搜索好用太多，装上就回不去了。
+Windows 文件名搜索。基本替代了资源管理器自带的搜索。
 
 ### [Snipaste](https://www.snipaste.com/)
 
-截图 + 贴图，截图可以钉在屏幕上，写代码、对文档的时候对照着看很方便。
+截图 + 贴图。截图可以钉在屏幕上，写代码、对文档时对照着看。
 
 ### [Geek Uninstaller](https://geekuninstaller.com/)
 
-卸载软件用。绿色单文件免安装，卸载时会连残留文件和注册表项一起清掉，对付卸不干净的软件很管用。
+卸载工具。绿色单文件，卸载时连同残留文件和注册表项一起清理。
 
 ## AI 工具
 
 ### [ZCode](https://zcode.ai/)
 
-桌面端 AI 助手，目前用着最顺手的，偶尔会有点 bug。
+桌面端 AI 助手。目前在用，偶尔会有点 bug，但已经留在日常流程里。
 
 ### [AtomCode](https://atomcode.atomgit.com/)
 
-终端里的 AI 编码助手，缓存命中率高，也更适配国内生态。刚开始用终端助手的话可以试试。
+终端里的 AI 编码助手。缓存命中率高，也更适配国内生态。
 
 ### [Claude Code](https://www.anthropic.com/claude-code)
 
@@ -69,7 +67,7 @@ Windows 上按文件名搜文件，基本秒出，比资源管理器自带的搜
 
 ### cnb-npc-skill（自研）
 
-让 CNB 的 CodeBuddy NPC 替我上班：一句话派发任务，云端 AI 在仓库里把活干完、提 PR（或只读评审出报告），我只管验收。把“建仓库→推代码→@CodeBuddy→等结果”这套手工流程压缩成一条命令，不占主力 agent 的上下文和模型并发，目前免费，实测 240 秒内 NPC 提交 PR。
+让 CNB 的 CodeBuddy NPC 在云端替我干活：一句话派发任务，它在仓库里执行完、提交 PR（或只读评审出报告），我只管验收。不占主力 Agent 的上下文和模型并发，实测 240 秒内提交 PR。
 
 [cnb-npc-skill](https://github.com/Zi-Yi-Ming/cnb-npc-skill) · [项目实践（CSDN）](https://blog.csdn.net/2402_87488142/article/details/164303415)
 
@@ -77,12 +75,12 @@ Windows 上按文件名搜文件，基本秒出，比资源管理器自带的搜
 
 ### [GitHub](https://github.com/)
 
-开源社区，唯一真神。有教育邮箱的建议申一个 Student Developer Pack，免费资源很多，还在持续更新。
+日常开发、开源协作和项目托管。
 
 ### [Google Skills](https://skills.google/)
 
-Google 官方的技能学习平台，AI、编程这些课免费学，学完能拿证书。
+Google 的官方学习平台。用于补充云、AI 等方向的实践知识。
 
 ### [WorldQuant BRAIN](https://platform.worldquantbrain.com/)
 
-量化研究平台，练 Alpha 不用实盘资金，对入门挺友好。
+量化研究平台。用于 Alpha Research 和回测实验。
