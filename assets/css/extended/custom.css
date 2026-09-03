@@ -738,11 +738,14 @@ img { max-width: 100%; height: auto; }
 
 /* 变体：无 meta 栏 / 无 TOC 时折叠对应列。
    画布化：About/Toolbox 等静态长页横贯全宽、与列表页同一起点——
-   About 单列 1fr；Toolbox 内容列 1fr + 右侧 sticky TOC 列。
-   行宽改由段落级控制（见下），列本身不再居中收窄。
+   Toolbox 的 TOC 改 fixed 悬浮（见 .article-layout--no-rail .article-toc），
+   内容列占满全宽，右侧由 .article 的 padding-right 预留悬浮目录空间。
    注：--no-toc（有 meta 栏的文章）仍保持有界阅读列 */
 .article-layout--no-rail {
-  grid-template-columns: minmax(0, 1fr) clamp(170px, 15vw, 240px);
+  grid-template-columns: minmax(0, 1fr);
+}
+.article-layout--no-rail .article {
+  padding-right: calc(clamp(170px, 15vw, 240px) + clamp(28px, 3vw, 56px));
 }
 .article-layout--no-toc {
   grid-template-columns: clamp(150px, 13vw, 200px) minmax(0, 820px);
@@ -892,6 +895,17 @@ img { max-width: 100%; height: auto; }
 }
 .article-toc__inner::-webkit-scrollbar { width: 3px; }
 .article-toc__inner::-webkit-scrollbar-thumb { background: rgba(179, 154, 240, 0.25); border-radius: 2px; }
+
+/* doc 画布页（Toolbox 等）TOC：fixed 悬浮于视口右缘，持续下滑也始终留在屏幕内
+   （sticky 受所在网格行约束，正文结束后会被带上屏外） */
+.article-layout--no-rail .article-toc {
+  position: fixed;
+  top: calc(var(--header-h) + 24px);
+  right: var(--pad-x);
+  width: clamp(170px, 15vw, 240px);
+  margin: 0;
+  z-index: 30;
+}
 
 #TableOfContents { list-style: none; margin: 0; padding: 0; }
 #TableOfContents ul { list-style: none; margin: 0; padding-left: 12px; }
@@ -1204,6 +1218,7 @@ img { max-width: 100%; height: auto; }
     grid-template-columns: minmax(0, 760px);
   }
   .article-toc { display: none; }
+  .article-layout--no-rail .article { padding-right: 0; }
 }
 
 /* --- 1100：首页 Hero 转纵向 --- */
