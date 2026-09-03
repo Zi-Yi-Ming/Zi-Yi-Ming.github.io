@@ -81,9 +81,7 @@
 
       {{- if .Content }}
       <div class="post-content article__content">
-        {{- if not (.Param "disableAnchoredHeadings") }}
         {{ .Content }}
-        {{- else }}{{ .Content }}{{ end }}
       </div>
       {{- end }}
 

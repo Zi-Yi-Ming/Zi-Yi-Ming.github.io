@@ -26,7 +26,7 @@ git clone --recurse-submodules https://github.com/Zi-Yi-Ming/Zi-Yi-Ming.github.i
 ├── i18n/                     # 中文本地化文案
 └── themes/papermod/          # 主题（git submodule）
 
-> 标题用 Noto Serif SC 子集字体（`static/fonts/`，由 `scripts/subset-fonts.py` 按站内文字生成）。新增文章含新汉字时，`py -3 scripts/subset-fonts.py <NotoSerifSC.ttf>` 重跑即可。
+> 标题使用自托管 Manrope 字体（`static/fonts/manrope-latin.woff2`），中文回退系统字体；无字体生成脚本。
 ```
 
 ## 写文章
