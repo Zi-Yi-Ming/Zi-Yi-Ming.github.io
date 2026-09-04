@@ -2,6 +2,7 @@
 title: "step-pilot"
 date: 2026-09-03
 weight: 40
+featured: 2
 description: "基于 pi 系开源项目（pi-tui）构建的终端 Coding Agent CLI：上游探索分支问题较多、且偏通用大模型，本项目 fork 后针对 Step 3.7 Flash 等小模型深度优化——精简 system prompt、收紧上下文预算、提前压缩，并修复一批上游遗留问题，独立演进发布。"
 tech: ["TypeScript", "pi-tui", "CLI", "AI Agent", "小模型优化"]
 status: "开源 · MIT · v0.1.5 活跃开发"

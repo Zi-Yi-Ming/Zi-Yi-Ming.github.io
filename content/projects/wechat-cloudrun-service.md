@@ -2,7 +2,6 @@
 title: "微信小程序云托管服务"
 date: 2026-08-21
 weight: 30
-featured: 2
 description: "基于微信云托管部署的 Spring Boot 后端服务：登录鉴权、开放接口调用，踩过 Docker CA 证书、HTTPS 握手、云调用鉴权等一系列坑，全流程梳理成排错笔记。"
 tech: ["Spring Boot", "微信云托管", "Docker", "HTTPS"]
 status: "线上运行"

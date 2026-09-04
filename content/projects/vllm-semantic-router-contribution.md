@@ -2,7 +2,7 @@
 title: "vLLM Semantic Router 上游贡献"
 date: 2026-09-02
 weight: 5
-featured: 4
+featured: 1
 description: "vllm-project/semantic-router（5k★ 开源项目）贡献者：PR #3294 已合入上游，现为 Developer Experience & Ecosystem 组成员。"
 tech: ["vLLM", "Shell", "容器", "开源贡献"]
 status: "上游已合并 · DE 组成员"

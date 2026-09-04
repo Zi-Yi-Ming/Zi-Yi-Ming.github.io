@@ -2,7 +2,7 @@
 title: "miniprogram-auto-test"
 date: 2026-08-31
 weight: 15
-featured: 3
+featured: 5
 description: "微信小程序自动化测试：让 AI 读 WXML+JS 直接生成可运行的测试脚本，附已发布 npm 适配层 miniprogram-automator-next，修掉官方 SDK 在新 DevTools / Node 上的两处坑。"
 tech: ["微信小程序", "Node.js", "自动化测试", "AI Agent", "开源"]
 status: "开源 · MIT · npm 已发布"
