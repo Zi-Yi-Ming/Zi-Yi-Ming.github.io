@@ -4,7 +4,6 @@
 
 ## 克隆与初始化
 
-> ⚠️ 主题是 git submodule，**必须带 `--recurse-submodules` 克隆**，否则构建会静默降级（缺主题模板，搜索页 `index.json` 不生成、页面样式丢失）。已经克隆过的补一句 `git submodule update --init --recursive` 即可。
 
 ```bash
 git clone --recurse-submodules https://github.com/Zi-Yi-Ming/Zi-Yi-Ming.github.io.git
