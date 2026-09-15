@@ -108,12 +108,30 @@
   }
 
   if (homeEl && !reduceMotion) {
-    /* 首屏进场：hero 元素 + 分隔线 + 档案区头，逐层 stagger */
+    /* 首屏进场：hero 元素 + 分隔线 + 档案区头，逐层 stagger
+       （大字单独做字符级 stagger，不进 entryEls 的整块 translateY） */
+    var heroName = homeEl.querySelector(".hero__name");
+    if (heroName) {
+      var nameText = heroName.textContent.replace(/\s+/g, " ").trim();
+      heroName.setAttribute("aria-label", nameText);
+      heroName.textContent = "";
+      heroName.classList.add("is-split");
+      nameText.split("").forEach(function (ch, i) {
+        var s = document.createElement("span");
+        s.className = "hero__ch";
+        s.textContent = ch === " " ? " " : ch;
+        s.style.setProperty("--d", (180 + i * 42) + "ms");
+        s.setAttribute("aria-hidden", "true");
+        heroName.appendChild(s);
+      });
+    }
+
     var entryEls = [].slice.call(homeEl.querySelectorAll(
-      ".hero__eyebrow,.hero__name,.hero__role,.hero__focus,.hero__aside," +
+      ".hero__eyebrow,.hero__role,.hero__focus,.hero__aside," +
       ".page__rule,.archive__head"
     ));
     entryEls.forEach(function (el, i) { markAnim(el, i * 110); });
+    if (heroName) markAnim(heroName, 0);
 
     /* 视口显现：条目行 / 列标签 / About 条，错峰进入 */
     var revealEls = [].slice.call(homeEl.querySelectorAll(
@@ -134,6 +152,7 @@
     /* 首屏进场在布局后一小拍触发，保证动画从"隐藏帧"可见地开始 */
     setTimeout(function () {
       entryEls.forEach(function (el) { el.classList.add("is-in"); });
+      if (heroName) heroName.classList.add("is-in");
     }, 260);
 
     /* 滚动提示：底部 SCROLL + 下落小点；滚过首屏后淡出（一次性） */
@@ -313,6 +332,281 @@
     window.addEventListener("scroll", applyBgBrightness, { passive: true });
     applyBgBrightness();
   }
+
+  /* ============ 动效：文章阅读进度（scroll-linked） ============
+     仅 .page--article；量 .article__content 穿过视口的比例。
+     rAF + lerp 轻微阻尼，避免 transform 跟滚过于生硬。 */
+  var articlePage = document.querySelector(".page--article");
+  var articleBody = articlePage && articlePage.querySelector(".article__content");
+  if (articleBody) {
+    var progress = document.createElement("div");
+    progress.className = "read-progress";
+    progress.setAttribute("aria-hidden", "true");
+    progress.innerHTML = '<span class="read-progress__bar"></span>';
+    document.body.appendChild(progress);
+    var pBar = progress.firstChild;
+    var pTarget = 0, pCurrent = 0, pRaf = 0;
+
+    function measureProgress() {
+      var rect = articleBody.getBoundingClientRect();
+      var viewH = window.innerHeight;
+      var startY = rect.top + window.scrollY - viewH * 0.12;
+      var endY = rect.bottom + window.scrollY - viewH * 0.88;
+      var span = Math.max(1, endY - startY);
+      pTarget = Math.min(1, Math.max(0, (window.scrollY - startY) / span));
+      if (window.scrollY > 100) progress.classList.add("is-on");
+      else progress.classList.remove("is-on");
+    }
+
+    function progressFrame() {
+      var step = reduceMotion ? 1 : 0.22;
+      pCurrent += (pTarget - pCurrent) * step;
+      if (Math.abs(pTarget - pCurrent) < 0.001) pCurrent = pTarget;
+      pBar.style.transform = "scaleX(" + pCurrent.toFixed(4) + ")";
+      if (pCurrent !== pTarget) {
+        pRaf = requestAnimationFrame(progressFrame);
+      } else {
+        pRaf = 0;
+      }
+    }
+
+    function onProgressScroll() {
+      measureProgress();
+      if (!pRaf) pRaf = requestAnimationFrame(progressFrame);
+    }
+
+    window.addEventListener("scroll", onProgressScroll, { passive: true });
+    window.addEventListener("resize", onProgressScroll, { passive: true });
+    onProgressScroll();
+  }
+
+  /* ============ 动效：顶栏向下滚收起、向上滚露出 ============ */
+  (function () {
+    var header = document.querySelector(".site-header");
+    if (!header || reduceMotion) return;
+    var lastY = window.scrollY;
+    var lock = false;
+    window.addEventListener("scroll", function () {
+      if (lock || document.documentElement.classList.contains("cmdk-open")) return;
+      lock = true;
+      requestAnimationFrame(function () {
+        var y = window.scrollY;
+        var dy = y - lastY;
+        if (y < 72) {
+          header.classList.remove("is-hidden");
+        } else if (dy > 4) {
+          header.classList.add("is-hidden");
+        } else if (dy < -4) {
+          header.classList.remove("is-hidden");
+        }
+        lastY = y;
+        lock = false;
+      });
+    }, { passive: true });
+  })();
+
+  /* ============ 命令面板 Cmd/Ctrl+K ============ */
+  (function () {
+    var root = document.getElementById("cmdk");
+    if (!root) return;
+    var input = document.getElementById("cmdkInput");
+    var list = document.getElementById("cmdkList");
+    var indexUrl = root.getAttribute("data-index") || "/index.json";
+
+    var navItems = [{ title: "Home", permalink: "/", kind: "page", hint: "首页" }];
+    document.querySelectorAll(".site-header__nav .site-header__link").forEach(function (a) {
+      var href = a.getAttribute("href") || "";
+      var text = (a.textContent || "").replace(/⌘K/g, "").trim();
+      var isExt = a.classList.contains("site-header__link--ext") || /^https?:/i.test(href);
+      if (!href) return;
+      navItems.push({
+        title: text || href,
+        permalink: href,
+        kind: isExt ? "ext" : "nav",
+        hint: isExt ? "外部" : "导航"
+      });
+    });
+
+    var archive = null;
+    var loading = null;
+    var active = -1;
+    var rows = [];
+    var lastFocus = null;
+
+    function loadIndex() {
+      if (archive) return Promise.resolve(archive);
+      if (loading) return loading;
+      loading = fetch(indexUrl)
+        .then(function (r) { return r.ok ? r.json() : []; })
+        .then(function (data) {
+          archive = (data || []).map(function (item) {
+            return {
+              title: item.title || "",
+              permalink: item.permalink || "#",
+              summary: item.summary || "",
+              content: item.content || "",
+              kind: "doc",
+              hint: "档案"
+            };
+          });
+          return archive;
+        })
+        .catch(function () { archive = []; return archive; });
+      return loading;
+    }
+
+    function kindLabel(kind) {
+      if (kind === "nav") return "NAV";
+      if (kind === "ext") return "EXT";
+      if (kind === "page") return "HOME";
+      return "DOC";
+    }
+
+    function scoreItem(item, q) {
+      var title = (item.title || "").toLowerCase();
+      var summary = (item.summary || "").toLowerCase();
+      var content = (item.content || "").toLowerCase();
+      var path = (item.permalink || "").toLowerCase();
+      if (title.indexOf(q) !== -1) return 120 - title.indexOf(q);
+      if (summary.indexOf(q) !== -1) return 80 - Math.min(40, summary.indexOf(q));
+      if (path.indexOf(q) !== -1) return 60;
+      if (content.indexOf(q) !== -1) return 40;
+      return -1;
+    }
+
+    function collect(q) {
+      q = (q || "").trim().toLowerCase();
+      var pool = navItems.concat(archive || []);
+      if (!q) {
+        return pool.filter(function (x) { return x.kind !== "doc"; }).slice(0, 8);
+      }
+      return pool
+        .map(function (item) {
+          return { item: item, s: scoreItem(item, q) };
+        })
+        .filter(function (x) { return x.s >= 0; })
+        .sort(function (a, b) { return b.s - a.s; })
+        .slice(0, 10)
+        .map(function (x) { return x.item; });
+    }
+
+    function setActive(next) {
+      if (!rows.length) { active = -1; return; }
+      if (next < 0) next = rows.length - 1;
+      if (next >= rows.length) next = 0;
+      active = next;
+      rows.forEach(function (el, i) {
+        el.classList.toggle("is-active", i === active);
+        if (i === active) {
+          el.scrollIntoView({ block: "nearest" });
+        }
+      });
+    }
+
+    function render(q) {
+      var items = collect(q);
+      rows = [];
+      active = -1;
+      list.innerHTML = "";
+      if (!items.length) {
+        var empty = document.createElement("li");
+        empty.className = "cmdk__empty";
+        empty.textContent = "NO MATCH · 换个关键词";
+        list.appendChild(empty);
+        return;
+      }
+      items.forEach(function (item, i) {
+        var li = document.createElement("li");
+        li.className = "cmdk__item";
+        li.setAttribute("role", "option");
+        li.dataset.href = item.permalink;
+        li.dataset.kind = item.kind || "doc";
+        var desc = item.summary
+          ? item.summary.replace(/\s+/g, " ").slice(0, 90)
+          : "";
+        li.innerHTML =
+          '<span class="cmdk__item-kind">' + kindLabel(item.kind) + "</span>" +
+          '<span class="cmdk__item-title"></span>' +
+          '<span class="cmdk__item-hint">' + (item.hint || "") + "</span>" +
+          (desc ? '<span class="cmdk__item-desc"></span>' : "");
+        li.querySelector(".cmdk__item-title").textContent = item.title;
+        if (desc) li.querySelector(".cmdk__item-desc").textContent = desc;
+        li.addEventListener("click", function () { go(item); });
+        list.appendChild(li);
+        rows.push(li);
+      });
+      setActive(0);
+    }
+
+    function go(item) {
+      var href = item && item.permalink;
+      if (!href) return;
+      close();
+      if (item.kind === "ext" || /^https?:\/\//i.test(href)) {
+        window.open(href, "_blank", "noopener");
+      } else {
+        window.location.href = href;
+      }
+    }
+
+    function open() {
+      if (!root.hasAttribute("hidden")) return;
+      lastFocus = document.activeElement;
+      root.removeAttribute("hidden");
+      document.documentElement.classList.add("cmdk-open");
+      input.value = "";
+      render("");
+      loadIndex().then(function () { if (input.value === "") render(""); });
+      input.focus();
+    }
+
+    function close() {
+      if (root.hasAttribute("hidden")) return;
+      root.setAttribute("hidden", "");
+      document.documentElement.classList.remove("cmdk-open");
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    function toggle() {
+      if (root.hasAttribute("hidden")) open();
+      else close();
+    }
+
+    document.addEventListener("keydown", function (e) {
+      var isMod = e.metaKey || e.ctrlKey;
+      if (isMod && (e.key === "k" || e.key === "K")) {
+        e.preventDefault();
+        toggle();
+        return;
+      }
+      if (root.hasAttribute("hidden")) return;
+      if (e.key === "Escape") {
+        e.preventDefault();
+        close();
+        return;
+      }
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        setActive(active + 1);
+        return;
+      }
+      if (e.key === "ArrowUp") {
+        e.preventDefault();
+        setActive(active - 1);
+        return;
+      }
+      if (e.key === "Enter") {
+        e.preventDefault();
+        var el = rows[active];
+        if (el && el.dataset.href) go({ permalink: el.dataset.href, kind: el.dataset.kind });
+      }
+    });
+
+    input.addEventListener("input", function () { render(input.value); });
+    root.querySelectorAll("[data-cmdk-close]").forEach(function (el) {
+      el.addEventListener("click", close);
+    });
+  })();
 
   /* 回到顶部 FAB（全站）：滚动过半渐显；点击回顶由上方锚点处理器负责 */
   var fab = document.querySelector(".top-fab");

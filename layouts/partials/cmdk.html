@@ -1,0 +1,21 @@
+{{- /* 全局命令面板：⌘K / Ctrl+K。档案索引复用首页 index.json；导航项运行时从顶栏读取 */ -}}
+<div class="cmdk" id="cmdk" hidden data-index="{{ "index.json" | relURL }}">
+  <div class="cmdk__backdrop" data-cmdk-close></div>
+  <div class="cmdk__panel" role="dialog" aria-modal="true" aria-label="命令面板">
+    <div class="cmdk__field">
+      <svg class="cmdk__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle cx="11" cy="11" r="7"></circle>
+        <line x1="20" y1="20" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input id="cmdkInput" class="cmdk__input" type="search" autocomplete="off" spellcheck="false"
+        placeholder="Search archive…  /  跳转导航" aria-label="搜索档案" aria-controls="cmdkList">
+      <kbd class="cmdk__kbd">ESC</kbd>
+    </div>
+    <ul class="cmdk__list" id="cmdkList" role="listbox" aria-label="结果"></ul>
+    <div class="cmdk__foot" aria-hidden="true">
+      <span><kbd>↑</kbd><kbd>↓</kbd> 选择</span>
+      <span><kbd>↵</kbd> 打开</span>
+      <span><kbd>esc</kbd> 关闭</span>
+    </div>
+  </div>
+</div>
