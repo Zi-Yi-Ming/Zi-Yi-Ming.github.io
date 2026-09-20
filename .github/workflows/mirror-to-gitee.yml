@@ -5,6 +5,14 @@ on:
     branches: ['*']
     tags: ['*']
 
+# 镜像只需要读源码；连续推送时串行执行，避免并发互相 force push
+permissions:
+  contents: read
+
+concurrency:
+  group: gitee-mirror
+  cancel-in-progress: false
+
 jobs:
   mirror:
     runs-on: ubuntu-latest

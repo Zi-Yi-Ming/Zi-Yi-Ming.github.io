@@ -18,4 +18,4 @@ github: "https://github.com/Zi-Yi-Ming/step-pilot"
 - **修复一批上游遗留问题**：pickers 的 Windows Enter 路径、`/compact` 手动与自动不一致、摘要质量闸门误判等（已列入 CHANGELOG）
 - **MCP 增强**：支持 streamable http 远程 server、调用超时防护、超长结果的语义预处理
 
-开发状态：v0.1.5，201 个测试文件 / 2778 个用例全绿，CI 跑 Ubuntu / Windows / macOS 三平台，附中英双语文档与 Releases 单文件可执行版。安装与使用见 [README](https://github.com/Zi-Yi-Ming/step-pilot#readme)。
+开发状态：v0.1.5（截至 2026-09：201 个测试文件 / 2778 个用例全绿），CI 跑 Ubuntu / Windows / macOS 三平台，附中英双语文档与 Releases 单文件可执行版。安装与使用见 [README](https://github.com/Zi-Yi-Ming/step-pilot#readme)。

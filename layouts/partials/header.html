@@ -10,7 +10,7 @@
       {{- range site.Menus.main }}
       {{- $u := .URL }}
       {{- $active := or (eq $current.RelPermalink $u) (and (ne $u "/") (hasPrefix $current.RelPermalink $u)) }}
-      <a class="site-header__link{{ if $active }} is-active{{ end }}" href="{{ $u | relLangURL }}">{{ .Name | upper }}{{ if eq .Identifier "search" }}<span class="site-header__hint" aria-hidden="true">⌘K</span>{{ end }}</a>
+      <a class="site-header__link{{ if $active }} is-active{{ end }}" href="{{ $u | relLangURL }}"{{ if $active }} aria-current="page"{{ end }}>{{ .Name | upper }}{{ if eq .Identifier "search" }}<span class="site-header__hint" aria-hidden="true">⌘K</span>{{ end }}</a>
       {{- end }}
       <a class="site-header__link site-header__link--ext" href="https://github.com/Zi-Yi-Ming" target="_blank" rel="noopener" aria-label="GitHub（新窗口）">
         <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">

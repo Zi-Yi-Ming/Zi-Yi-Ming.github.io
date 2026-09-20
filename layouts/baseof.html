@@ -28,9 +28,10 @@
 {{- end }}
     {{- partial "bg.html" . }}
     {{- partial "header.html" . }}
-    <main class="main">
+    {{- /* 用 div 而非 main：内层各模板还有自己的 <main>，HTML 只允许一个 main */ -}}
+    <div class="main">
         {{- block "main" . }}{{ end }}
-    </main>
+    </div>
     {{- partial "cmdk.html" . }}
     {{- partial "footer.html" . }}
 </body>

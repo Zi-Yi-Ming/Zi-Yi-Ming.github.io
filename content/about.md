@@ -34,7 +34,7 @@ showToc: false
 
 在 [vLLM Semantic Router](https://community.vllm-sr.ai/)（5k★ 开源项目）里参与了实际开发：PR #3294 已合入上游，现在是它 Developer Experience & Ecosystem 组的成员。这不是偶尔提点代码，而是一段持续的协作。
 
-自己做的方向里，最能代表当前状态的是 [cnb-npc-skill](https://github.com/Zi-Yi-Ming/cnb-npc-skill)：一个把“一句话派发任务 → 云端 AI 在仓库里执行 → 提交 PR / 输出评审报告”压成一条命令的工具。我用它把大量重复的仓库操作交给云端的 CodeBuddy NPC，自己只做验收，实测 240 秒内就能等到 PR。它也是我对 AI Agent、自动化与 Developer Tools 这条线的直接实践。详情在[项目页](/projects/cnb-npc-skill/)。
+自己做的方向里，最能代表当前状态的是 [cnb-npc-skill](https://github.com/Zi-Yi-Ming/cnb-npc-skill)：一个把“一句话派发任务 → 云端 AI 在仓库里执行 → 提交 PR / 输出评审报告”压成一条命令的工具。我用它把大量重复的仓库操作交给云端的 CodeBuddy NPC，自己只做验收，实测 240 秒内就能等到 PR（2026-08 数据）。它也是我对 AI Agent、自动化与 Developer Tools 这条线的直接实践。详情在[项目页](/projects/cnb-npc-skill/)。
 
 ## 当前关注
 

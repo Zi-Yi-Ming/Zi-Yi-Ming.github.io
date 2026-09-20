@@ -12,9 +12,9 @@ github: "https://github.com/Zi-Yi-Ming/miniprogram-auto-test"
 微信小程序的自动化测试很难写：官方的 `miniprogram-automator` 是裸 SDK，每个用例都要手写「选元素、点击、断言」，而且 2023-11 之后就没再更新。这个项目做了两件事：
 
 - **skill**：一个 Claude Code skill，让 AI 读懂页面的 WXML + JS，按一句话需求生成能直接跑的 `*.test.js`
-- **miniprogram-automator-next**：[npm 包](https://www.npmjs.com/package/miniprogram-automator-next)（v0.1.1，已发布），官方 SDK 的适配层，修了两处实测坏掉的东西
+- **miniprogram-automator-next**：[npm 包](https://www.npmjs.com/package/miniprogram-automator-next)（截至 2026-08 为 v0.1.1，已发布），官方 SDK 的适配层，修了两处实测坏掉的东西
 
-两个实测结论（DevTools 2.01 / 基础库 3.17 / Node v24 / Windows 11）：
+两个实测结论（2026-08，DevTools 2.01 / 基础库 3.17 / Node v24 / Windows 11）：
 
 1. 官方文档主推的 `Page.*` 命令族（`page.$()` / `setData` / `callMethod` 等）在新版开发者工具上**整族超时失效**，只能靠 `miniProgram.evaluate()` 跑运行时代码——修复包把元素层整个重建在 `evaluate` 之上
 2. Node ≥18.20 修掉 CVE-2024-27980（BatBadBut）后，官方 Launcher `spawn()` 一个 `.bat` 会直接抛 `EINVAL`，还把它错报成「cliPath 路径错误」——修复包改为直接 spawn 同目录的 `node.exe`，绕开 `.bat`，也不需要重新打开 `shell:true` 那个注入面

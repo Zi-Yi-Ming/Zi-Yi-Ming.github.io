@@ -1,0 +1,30 @@
+{{- /* 覆盖 PaperMod 的 twitter_cards.html:追加全局默认图回退(site.Params.defaultOgImage) */}}
+{{- if .Params.cover.image -}}
+<meta name="twitter:card" content="summary_large_image">
+{{- if (ne .Params.cover.relative true) }}
+<meta name="twitter:image" content="{{ .Params.cover.image | absURL }}">
+{{- else }}
+<meta name="twitter:image" content="{{ (path.Join .RelPermalink .Params.cover.image ) | absURL }}">
+{{- end}}
+{{- else }}
+{{- $images := partial "templates/_funcs/get-page-images" . }}
+{{- with index $images 0 }}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{ .Permalink }}">
+{{- else }}
+{{- with site.Params.defaultOgImage }}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{ . | absURL }}">
+{{- else }}
+<meta name="twitter:card" content="summary">
+{{- end }}
+{{- end }}
+{{- end }}
+
+{{- with or .Title site.Title site.Params.title | plainify }}
+<meta name="twitter:title" content="{{ . }}">
+{{- end }}
+
+{{- with or .Description .Summary site.Params.description | plainify | htmlUnescape }}
+<meta name="twitter:description" content="{{ trim . "\n\r\t " }}">
+{{- end }}

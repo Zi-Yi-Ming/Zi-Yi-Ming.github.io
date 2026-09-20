@@ -585,6 +585,12 @@
         close();
         return;
       }
+      /* 焦点陷阱：面板唯一可聚焦元素是输入框，Tab 不逃出对话框 */
+      if (e.key === "Tab") {
+        e.preventDefault();
+        input.focus();
+        return;
+      }
       if (e.key === "ArrowDown") {
         e.preventDefault();
         setActive(active + 1);
