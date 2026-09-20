@@ -145,14 +145,17 @@ img { max-width: 100%; height: auto; }
   pointer-events: none;
 }
 
-/* 夜景主图：压暗 + 轻微放大，为视差留出余量 */
+/* 夜景主图：压暗 + 轻微放大，为视差留出余量。
+   WebP 背景图（72KB，原 PNG 1.8MB 已移入 blog-editorial-ui/bg-source/ 本地留存）；
+   div + background-image 使移动端 display:none 时不产生下载。 */
 .site-bg__photo {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center 42%;
+  background-image: url("/bg/night-city.webp");
+  background-size: cover;
+  background-position: center 42%;
   filter: saturate(0.92) brightness(var(--pb, 0.72));
   transform: scale(1.03);
   will-change: transform;
