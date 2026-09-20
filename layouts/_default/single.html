@@ -37,6 +37,13 @@
           <dd><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time></dd>
         </div>
         {{- end }}
+        {{- /* 内容在首发日后又有过 git 提交才显示 UPDATED（enableGitInfo 提供 Lastmod；按天比较，同日不显示） */ -}}
+        {{- if and (not .Lastmod.IsZero) (not .Date.IsZero) (ne (.Lastmod.Format "2006-01-02") (.Date.Format "2006-01-02")) }}
+        <div class="rail__row">
+          <dt>UPDATED</dt>
+          <dd><time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "2006.01.02" }}</time></dd>
+        </div>
+        {{- end }}
         {{- if .Param "ShowReadingTime" }}
         <div class="rail__row">
           <dt>READ</dt>

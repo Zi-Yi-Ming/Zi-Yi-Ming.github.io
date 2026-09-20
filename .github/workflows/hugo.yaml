@@ -34,6 +34,8 @@ jobs:
         with:
           submodules: recursive
           persist-credentials: false
+          # enableGitInfo 需要完整历史来推导每个文件的 Lastmod
+          fetch-depth: 0
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5

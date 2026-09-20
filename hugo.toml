@@ -7,6 +7,9 @@ theme = 'papermod'
 enableRobotsTXT = true
 enableEmoji = true
 hasCJKLanguage = true
+# 用 git 提交历史推导各页 Lastmod（CI 需 fetch-depth: 0）；
+# 文章页 rail 的 UPDATED 行、sitemap/RSS 的 lastmod 都基于它
+enableGitInfo = true
 
 [pagination]
   pagerSize = 10
