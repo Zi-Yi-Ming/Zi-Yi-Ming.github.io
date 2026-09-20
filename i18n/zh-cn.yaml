@@ -1,31 +1,5 @@
-- id: prev_page
-  translation: "上一页"
-
-- id: next_page
-  translation: "下一页"
-
-- id: read_time
-  translation:
-    one : "1 分钟"
-    other: "{{ .Count }} 分钟"
-
-- id: words
-  translation: 
-    one: "字"
-    other: "{{ .Count }} 字"
-
-- id: toc
-  translation: "目录"
-
-- id: translations
-  translation: "语言"
-
-- id: home
-  translation: "主页"
-
-- id: edit_post
-  translation: "编辑"
-
+# 仅保留本站自定义模板实际使用的文案（代码块复制按钮）。
+# PaperMod 其余文案（分页、阅读时间等）由本站模板直接硬编码中文，无需 i18n 条目。
 - id: code_copy
   translation: "复制"
 

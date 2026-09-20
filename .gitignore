@@ -9,5 +9,9 @@ hugo-server*.log
 # 本地工具状态
 .zcode/
 
+# AI 工具本地状态（会话记录 / 记忆 / 回滚数据，禁止入库）
+.agent-memory/
+.dsh/
+
 # 设计工具导出产物（Trae 设计稿快照，源文件保留在本地，不入库）
 blog-editorial-ui/

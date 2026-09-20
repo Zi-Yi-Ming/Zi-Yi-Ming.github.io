@@ -1,4 +1,4 @@
-baseURL = 'https://Zi-Yi-Ming.github.io/'
+baseURL = 'https://zi-yi-ming.github.io/'
 locale = 'zh-cn'
 defaultContentLanguage = 'zh-cn'
 title = 'Zi-Yi-Ming'
@@ -7,7 +7,9 @@ theme = 'papermod'
 enableRobotsTXT = true
 enableEmoji = true
 hasCJKLanguage = true
-paginate = 10
+
+[pagination]
+  pagerSize = 10
 
 # 让首页输出 index.json，供搜索页 (fastsearch.js) 抓取建索引
 [outputs]
@@ -33,24 +35,14 @@ paginate = 10
   title = 'Zi-Yi-Ming'
   description = 'Zi-Yi-Ming 的个人作品集：开源工具、量化研究、云服务与机器视觉'
   author = 'Zi-Yi-Ming'
-  DateFormat = '2006-01-02'
   defaultTheme = 'dark'
   # Light 模式暂缓：先隐藏主题切换（PaperMod head/footer 脚本按此开关生效）
   disableThemeToggle = true
   ShowReadingTime = true
   ShowWordCount = true
-  ShowShareButtons = false
-  ShowCodeCopyButtons = true
   ShowPostNavLinks = true
-  ShowBreadCrumbs = true
   ShowToc = true
-  TocOpen = false
-  hideFooter = false
   defaultOgImage = '/og-default.png'
-
-  [[params.socialIcons]]
-    name = 'github'
-    url = 'https://github.com/Zi-Yi-Ming'
 
   [[menu.main]]
     identifier = 'projects'
