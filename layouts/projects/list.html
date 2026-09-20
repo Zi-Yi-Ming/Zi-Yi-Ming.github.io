@@ -37,10 +37,10 @@
           {{- with $project.Params.tech }}
           <p class="entry-row__tech">{{ delimit . " · " }}</p>
           {{- end }}
-          {{- if or $project.Params.status $project.Params.github $project.Params.notes }}
+          {{- if or $project.Params.status $external $project.Params.notes }}
           <p class="entry-row__links">
             {{- with $project.Params.status }}<span class="entry-row__status">{{ . }}</span>{{ end }}
-            {{- if $project.Params.github }}<a href="{{ $project.Params.github }}" target="_blank" rel="noopener">GitHub ↗</a>{{ end }}
+            {{- if $external }}<a href="{{ $project.RelPermalink }}">详情</a>{{ end }}
             {{- range $project.Params.notes }}<a href="{{ . }}" target="_blank" rel="noopener">笔记 ↗</a>{{ end }}
           </p>
           {{- end }}
@@ -70,10 +70,10 @@
           {{- with $project.Params.tech }}
           <p class="entry-row__tech">{{ delimit . " · " }}</p>
           {{- end }}
-          {{- if or $project.Params.status $project.Params.github $project.Params.notes }}
+          {{- if or $project.Params.status $external $project.Params.notes }}
           <p class="entry-row__links">
             {{- with $project.Params.status }}<span class="entry-row__status">{{ . }}</span>{{ end }}
-            {{- if $project.Params.github }}<a href="{{ $project.Params.github }}" target="_blank" rel="noopener">GitHub ↗</a>{{ end }}
+            {{- if $external }}<a href="{{ $project.RelPermalink }}">详情</a>{{ end }}
             {{- range $project.Params.notes }}<a href="{{ . }}" target="_blank" rel="noopener">笔记 ↗</a>{{ end }}
           </p>
           {{- end }}
