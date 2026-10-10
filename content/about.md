@@ -1,6 +1,6 @@
 ---
 title: "About"
-description: "AI Infra 与 Agent 开发：vLLM Semantic Router 核心贡献者（即将成为 Collaborator）、desktop-for-step-code 二号贡献者"
+description: "AI Infra 与 Agent 开发：vLLM Semantic Router 上游贡献、Agent 桌面端与自动化工具"
 ShowReadingTime: false
 ShowWordCount: false
 hideAuthor: true
@@ -20,11 +20,11 @@ showToc: false
 
 ## 主线一：AI Infra —— vLLM Semantic Router
 
-给 [vLLM Semantic Router](https://community.vllm-sr.ai/)（6k★ 开源项目）持续贡献上游代码：DE&E 组核心成员，即将以 Collaborator 身份进入维护团队；按 GitHub 贡献者榜，近三个月的提交量进入前 10（不计 merge 机器人）。方向集中在安装与容器运行时、官网与文档、Dashboard——代表作是让安装脚本识别已有 Podman 的 [#3294](https://github.com/vllm-project/semantic-router/pull/3294)，以及后续一组 runtime 改进。详情在[项目页](/projects/vllm-semantic-router-contribution/)。
+[vLLM Semantic Router](https://community.vllm-sr.ai/) 是一个可编程的模型决策层（6k★）：把多模型路由、语义缓存、提示守卫和工具调用收拢到一套规则里，让“用哪个模型、走哪条路”变成可配置的工程问题。我持续给它贡献上游代码，方向集中在安装与容器运行时、官网与文档、Dashboard——最早的一个修复是让安装脚本识别已有的 Podman（[#3294](https://github.com/vllm-project/semantic-router/pull/3294)），后面顺着这条线做了一组 runtime 改进。详情在[项目页](/projects/vllm-semantic-router-contribution/)。
 
 ## 主线二：Agent 开发 —— desktop-for-step-code
 
-[desktop-for-step-code](https://github.com/7oMB2006/desktop-for-step-code) 是 Step Code 的社区 Windows 桌面客户端（Electron + React + TypeScript），我是两人团队的二号贡献者：43 个提交、21 个 PR 合入，主攻构建发布链路与 CI 一致性。同一条线上还有自己做的 [cnb-npc-skill](https://github.com/Zi-Yi-Ming/cnb-npc-skill)：把“派发任务 → 云端 AI 执行 → PR / 评审报告”压成一条命令，不占主力 Agent 的上下文——这是我对 Agent 自动化的理解方式。
+[desktop-for-step-code](https://github.com/7oMB2006/desktop-for-step-code) 是 Step Code 的社区 Windows 桌面客户端（Electron + React + TypeScript）：官方桌面端缺位时，它把工作区、会话管理和流式对话跑起来，Step Code 负责底层的 agent 执行。我主要做构建与发布链路——集成补丁的 npm 构建降级、CI 钉点一致性检查、构建文档对齐这些工程侧的事。同一条线上还有自己做的 [cnb-npc-skill](https://github.com/Zi-Yi-Ming/cnb-npc-skill)：把“派发任务 → 云端 AI 执行 → PR / 评审报告”压成一条命令，不占主力 Agent 的上下文。
 
 ## 更早的积累：量化研究
 
