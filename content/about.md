@@ -1,6 +1,6 @@
 ---
 title: "About"
-description: "一个持续做项目、研究工具、记录技术实践的开发者"
+description: "AI Infra 与 Agent 开发：vLLM Semantic Router 核心贡献者（即将成为 Collaborator）、desktop-for-step-code 二号贡献者"
 ShowReadingTime: false
 ShowWordCount: false
 hideAuthor: true
@@ -10,7 +10,7 @@ showToc: false
 
 你好，我是 ZiY1Ming。
 
-一个持续做项目、研究工具、记录技术实践的开发者。软件工程背景，目前主要精力放在 AI、开发者工具与自动化这条线上。方向还在收敛——我习惯先用项目和记录把它固定下来，而不是先想好一个标签。
+一个做 AI Infra 与 Agent 开发的软件工程开发者。方向已经收敛：往上是模型推理基础设施（vLLM Semantic Router），往下是 Agent 运行时与工具（桌面端、自动化）——前者是社区协作，后者是自己从 0 搭的东西。
 
 ## 关于本站
 
@@ -18,11 +18,17 @@ showToc: false
 
 内容不保证成体系。很多是某个问题折腾了很久之后留下的记录。比起写一篇“完美的教程”，我更希望这里能保留真实的过程，以后翻回来看，能想起当时是怎么一步步试过来的。
 
-## 量化研究
+## 主线一：AI Infra —— vLLM Semantic Router
 
-在 WorldQuant BRAIN 上做了相当一段时间 Alpha 研究：累计一万多次回测，提交过 50+ 个 Alpha 因子，国内综合排名进过前 30+。
+给 [vLLM Semantic Router](https://community.vllm-sr.ai/)（6k★ 开源项目）持续贡献上游代码：DE&E 组核心成员，即将以 Collaborator 身份进入维护团队；按 GitHub 贡献者榜，近三个月的提交量进入前 10（不计 merge 机器人）。方向集中在安装与容器运行时、官网与文档、Dashboard——代表作是让安装脚本识别已有 Podman 的 [#3294](https://github.com/vllm-project/semantic-router/pull/3294)，以及后续一组 runtime 改进。详情在[项目页](/projects/vllm-semantic-router-contribution/)。
 
-那个平台让我养成了一个习惯：一个想法不管听起来多合理，都要回测完再下结论。改参数、换思路、再回测，多循环几轮之后，对“拍脑袋”会越来越警惕。
+## 主线二：Agent 开发 —— desktop-for-step-code
+
+[desktop-for-step-code](https://github.com/7oMB2006/desktop-for-step-code) 是 Step Code 的社区 Windows 桌面客户端（Electron + React + TypeScript），我是两人团队的二号贡献者：43 个提交、21 个 PR 合入，主攻构建发布链路与 CI 一致性。同一条线上还有自己做的 [cnb-npc-skill](https://github.com/Zi-Yi-Ming/cnb-npc-skill)：把“派发任务 → 云端 AI 执行 → PR / 评审报告”压成一条命令，不占主力 Agent 的上下文——这是我对 Agent 自动化的理解方式。
+
+## 更早的积累：量化研究
+
+在 WorldQuant BRAIN 上做过相当长时间的 Alpha 研究：一万多次回测、50+ 因子、国内排名进过前 30。主业已经不在这，但它留给我一个习惯——任何想法都要回测完再下结论。
 
 <div class="stat-strip" aria-label="量化研究数据">
 
@@ -30,17 +36,11 @@ showToc: false
 
 </div>
 
-## 开源与开发者工具
-
-在 [vLLM Semantic Router](https://community.vllm-sr.ai/)（6k★ 开源项目）里参与了实际开发：DE&E 组核心成员，按 GitHub 贡献者榜，近三个月的提交量进入前 10（不计 merge 机器人）。这不是偶尔提点代码，而是一段持续的协作。
-
-自己做的方向里，最能代表当前状态的是 [cnb-npc-skill](https://github.com/Zi-Yi-Ming/cnb-npc-skill)：一个把“一句话派发任务 → 云端 AI 在仓库里执行 → 提交 PR / 输出评审报告”压成一条命令的工具。我用它把大量重复的仓库操作交给云端的 CodeBuddy NPC，自己只做验收，实测 240 秒内就能等到 PR（2026-08 数据）。它也是我对 AI Agent、自动化与 Developer Tools 这条线的直接实践。详情在[项目页](/projects/cnb-npc-skill/)。
-
 ## 当前关注
 
-关注点逐渐收敛到几块：AI / LLM 应用、开发者工具与自动化、量化研究，以及能让代码连接现实世界的 Computer Vision。
+AI Infra 侧：模型决策层、推理路由、安装与容器运行时这类“让模型可靠跑起来”的工程链路。Agent 侧：运行时、桌面端、工具调用与自动化审批。两个方向的共同点——把 AI 能力变成基础设施，而不是 demo。
 
-目前在 OpenMV 与嵌入式视觉上投入较多：摄像头、图像处理、MicroPython、传感器。代码能真正“看到”东西、控制现实世界，和纯写软件是两种感觉。方向上我仍在探索，但几个关注点已经慢慢清晰——剩下的交给项目与记录去验证。
+## 联系方式
 
 ## 联系方式
 
