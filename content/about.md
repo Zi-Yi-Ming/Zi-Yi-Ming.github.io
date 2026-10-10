@@ -42,8 +42,6 @@ AI Infra 侧：模型决策层、推理路由、安装与容器运行时这类�
 
 ## 联系方式
 
-## 联系方式
-
 <section class="contact-index" aria-label="联系方式">
 
 <a class="contact-index__item" href="https://github.com/Zi-Yi-Ming" target="_blank" rel="noopener noreferrer">
