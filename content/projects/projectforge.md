@@ -2,7 +2,6 @@
 title: "ProjectForge"
 date: 2026-09-04
 weight: 5
-featured: 3
 description: "AI 驱动的工程项目教练与实现引擎：从 JD 出发做项目规划、生成任务图，再在明确约束下执行实现，并对结果做验证与再规划。"
 tech: ["AI", "工程自动化", "任务图"]
 status: "开源 · 活跃开发"

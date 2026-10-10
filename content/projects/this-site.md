@@ -2,6 +2,7 @@
 title: "本站 · Night Archive 个人网站"
 date: 2026-08-22
 weight: 50
+featured: 6
 description: "这个网站本身：Hugo + PaperMod 深度定制的 Night Archive 设计——暗色档案库 + editorial 排版、紫色 accent、像素夜景背景语言，自定义 homepage 与项目/笔记档案页，GitHub Pages 自动部署。"
 tech: ["Hugo", "PaperMod", "CSS", "SVG", "GitHub Pages"]
 status: "持续迭代"

@@ -2,6 +2,7 @@
 title: "Kaggle Archive"
 date: 2026-09-04
 weight: 25
+featured: 5
 description: "Kaggle 竞赛实验与研究归档：把竞赛里的数据处理、特征/建模实验与复盘沉淀成可回看、可复用的记录。"
 tech: ["Kaggle", "Python", "ML"]
 status: "研究归档 · 持续更新"
